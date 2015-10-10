@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+.utools{ width:100px; float:right;  }
+.menu{ min-width:100px; text-align:center; line-height:43px;}
+.menu dt{ width:43px; height:43px; color:#999; font-size:12px;}
+.menu dt img{ width:43px; height:43px; background:#999;}
+.menu dd a{ display:block; width:100px; height:43px; line-height:43px;  margin-top:1px; color:#fff; font-size:12px;
+            background:#000; opacity:0.6; /*透明*/ -moz-opacity:0.6; -webkit-opacity:0.6;}
+.menu dd a img{ width:26px; height:26px; position:relative; top:9px; left:-5px;}
+.menu dd a:hover{ opacity:0.8; /*透明*/ -moz-opacity:0.8; -webkit-opacity:0.8; }

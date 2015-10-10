@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0; text-decoration:none; list-style:none;  }
+
+#page{ width:100%; height:auto; min-width:1100px;}
+#page .top{ width:100%; min-width:1100px; height:46px; position:absolute;}
+#page .top .nav{ min-width:1200px; position:fixed; top:0; left:0; width:100%; height:46px; z-index:9;}
+#page .top .navbj{ position:fixed; top:0; left:0; width:100%; height:46px; background:#640000; z-index:8; box-shadow:1px 1px 1px #990000;
+                    opacity:0.6; /*透明*/ -moz-opacity:0.6; -webkit-opacity:0.6; }
+#page .top .logo{ width:160px; float:left; margin-left:10%; /*position:fixed; left:30px; top:0;*/}
+#page .top .logo a{ display:block; width:100px;  margin:4px 0 0 60px; line-height:30px;}
+#page .top .logo a .text{ font:"宋体", Fixedsys; font-size:23px !important; }
+
+#page .top .sosofornav{ margin:3px 0 0 0; line-height:36px; float:left; visibility:hidden; /*position:fixed; left:20%; right:20%; top:0;*/ }
+.soso{ width:600px; height:36px; line-height:36px; position:relative; top:40%; margin:0 auto; }
+#query{ width:594px; height:36px;  padding:0 5px;  line-height:36px; font-size:13px; color:#FFF; margin:0 auto; background:#000; border:1px #FFFFFF solid;
+        opacity:0.5; /*透明*/ -moz-opacity:0.5; -webkit-opacity:0.5; 
+		border-radius:1px; /* 圆角*/
+		-moz-border-radius:1px;
+		-webkit-border-radius:1px;}
+.go{ width:40px; height:36px; position:relative; float:right; right:-6px; top:-30px;}
+
+#page .top .tool{ width:200px; float:right;   /*visibility:hidden; position:fixed; right:0px; top:0;*/  }
+.text{ color:#FFF; text-align:center; font:"华文行楷", "Buxton Sketch"; font-size:12px; }
+#page .top .tool a{ display:block; float:left;  width:55px; height:32px; text-align:center; margin:4px 0 0 10px; line-height:30px;
+					  border-radius:2px; /* 圆角*/
+					  -moz-border-radius:2px;
+					  -webkit-border-radius:2px;}
+#register{  background:#900; border:1px solid #900; opacity:0.6; /*透明*/ -moz-opacity:0.6; -webkit-opacity:0.6;  }
+#login{ border:1px solid #CCC;}
+#register:hover{ background:#903;  opacity:0.8; /*透明*/ -moz-opacity:0.8; -webkit-opacity:0.8;}
+#login:hover{ background:#FFF;}
+#login:hover span{ color:#000;}
+
+#page .top .banner{ width:100%;  min-width:1130px; height:460px; background:url(../images/11.jpg);  position:relative; top:0; }
+
+
+#page .pagemain{ width:96%; min-width:500px; height:auto; min-height:600px;  margin:0 auto; position:relative; top:460px;}
+#page .pagemain .recommend-line{ position:relative; padding:20px 0;text-align:center }
+#page .pagemain .recommend-line:before,.recommend-line:after{ display:block;position:absolute;top:28px;width:44%;content:"";border-top:1px solid #ededed}
+#page .pagemain .recommend-line:before{ left:0;}
+#page .pagemain .recommend-line:after{ right:0;}
+#page .pagemain .recommend-line>a{display:inline-block;font-size:16px;color:#999;}
+
+#page .pagemain .tqnav{ width:auto; min-width:500px; height:71px; margin:0 auto; overflow:hidden;}
+#page .pagemain .tqnav a{ display:block; float:left; width:20%; height:67px; margin:0 2.3%;  border:1px solid #CCC;
+					  border-radius:5px; /* 圆角*/
+					  -moz-border-radius:5px;
+					  -webkit-border-radius:5px;}
+#page .pagemain .tqnav a .blur{  min-width:30px; text-align:center;  height:100%;    }
+#page .pagemain .tqnav a .blur img{ -ms-filter:blur(3px); filter:blur(3px);
+                                    -o-filter:blur(3px);
+                                    -webkit-filter:blur(3px); /*模糊*/
+                                    -moz-filter:blur(3px);}        
+#page .pagemain .tqnav a .title{ width:90px; height:30px; margin:0 auto;
+	                        position:relative; top:-70%; font-size:22px; color:#FFF; line-height:100%;  font-weight:400}
+
+.msg{ width:80%; height:300px; position:relative; top:30px; margin:0 auto;  background:#999;}
+
+
+#tools{ width:60px; height:60px; position:fixed; bottom:0; right:0; /*visibility:hidden;*/}
+#tools a img{ width:100%;  height:100%;}

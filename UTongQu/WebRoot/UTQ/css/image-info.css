@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background:#FFE;}
+.image-info{ width:65%; height:auto; min-width:1130px; margin:0 auto;}
+.image-piece{ width:65%; float:left; background:#FFF; }
+.main-image{ width:650px; height:auto; background:url(../images/111.png); border:1px solid #ccc; margin:0 auto;}
+
+.image-holder{ width:600px; height:auto; margin:0 auto;}
+.image-holder img{ width:600px; height:auto; }
+
+.tool-bar-bottom{ width:100%; height:30px;  }
+.tool-bar{ width:80%; height:100px; margin:0 auto;  }
+.tool-info{ width:650px; height:auto; margin:0 auto; border:1px solid #CCC; background:url(../images/111.png);}
+.info-time{width:650px; height:60px; line-height:60px; margin:0 auto; }
+.clearfix{ width:650px; height:100px; margin:0 auto;}
+.info-time img , .clearfix img{ width:50px; height:50px; padding:3px;}
+.clear-input{ width:496px; height:40px; left:10px; padding:0 5px 3px; resize:none;  font-size:16px;}
+.board-info{ width:30%; height:auto; float:right;}
+.pinglun{ display:block; width:80px; height:26px; line-height:26px; margin:3px 0; padding:3px;
+          position:relative; float:right; border:1px solid #999;  background:#CCC; color:#999;}
+.pinglun span{ margin:0 0 0 6px; font-size:16px; }
+.pinglun :hover{ color:#666;}
+
+.comments{ width:650px; height:auto; margin:10px auto 0; border:1px solid #ccc; background:url(../images/111.png);} 
+.comment-info{ width:600px; height:auto; margin:10px auto; border-bottom:1px solid #ccc;}
+.head{ display:block; width:50px; height:50px; margin:0 10px 5px 0 ; padding:5px; float:left; border:1px solid #ccc;}
+.head img{ width:50px; height:50px;}
+.comment{ width:580px; height:auto; float:right;}
+.comment p{color:#666; font-size:16px;}
+.comm{ padding-top:10px;}
+.ctime{ color:#999; font-size:12px;}

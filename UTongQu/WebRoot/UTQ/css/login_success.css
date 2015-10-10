@@ -1,0 +1,5 @@
+@charset "utf-8";
+/* CSS Document */
+#page .top .sosofornav{ margin:3px 0 0 0; line-height:36px; float:left; visibility:visible !important; /*position:fixed; left:20%; right:20%; top:0;*/ }
+#page .pagemain{ width:96%; min-width:500px; height:auto;  margin:0 auto; position:relative; top:60px;}
+

@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>U童趣——分享童年的乐趣</title>
+<link type="text/css" rel="stylesheet" href="css/master.css" />
+<link type="text/css" rel="stylesheet" href="css/utools.css" />
+<link type="text/css" rel="stylesheet" href="css/index.css">
+<link type="text/css" rel="stylesheet" href="css/bannercase.css">
+<link type="text/css" rel="stylesheet" href="css/loginform.css">
+<link type="text/css" rel="stylesheet" href="css/code.css">
+<link type="text/css" rel="stylesheet" href="css/images.css"/>
+<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+<!--script type="text/javascript" src="js/index.js"></script-->
+<script type="text/javascript" src="js/toTop.js"></script>
+<script type="text/javascript" src="js/utools.js"></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script type="text/javascript" src="js/waterfall.js"></script>
+<script type="text/javascript" src="js/jquery.imgbox.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+    imgs();	/*调用图片弹窗的方法*/
+	$("#toTop").hide();
+	$(".easytip-div").hide();
+	
+window.onload=function(){
+    document.documentElement.scrollTop=0;   //加载时重置滚动高度
+    waterFall("imgmain","imgboxs",{method:"waterFall.php",maxColumns:5,minColumns:3,dropDegree:"center",loadingId:"waterfall_loading",ajaxPOST:{title:"test"}},function(data,parent){
+           
+	  //图片块的HTML模板
+      var moban='<div class="pic images"><a class="example" href="{{image}}"><img src={{image}} /></a><div class="content">'+
+                   '<span class="content-text" >{{content}}</span>'+
+                   '</div><div class="imgtitle"><span>{{title}}</span></div><div class="imginfo">'+
+                  '<div class="headpic"><img src="{{headpic}}" /> </div><div class="imsg"><p><span class="sc">{{person}}</span><span>发布</span>'+
+                   '</p><p class="time">（{{time}}）</p></div></div><div class="action"><p><span>{{like}}喜欢</span><span>丨</span><span>{{dislike}}不喜欢</span>'+
+                     '<span>丨</span><span>{{comment}} 评论</span></p></div></div>';
+      for(var i=0;i<data.data.length;i++){
+          var odiv=document.createElement("div");
+          odiv.className="imgboxs";
+          var newdiv=moban.replace(/{{image}}/,"images/"+data.data[i].img)
+				                .replace(/{{image}}/,"images/"+data.data[i].img)
+								.replace(/{{content}}/,+data.data[i].content)
+								.replace(/{{title}}/,data.data[i].title)
+								.replace(/{{headpic}}/,"images/"+data.data[i].headpic)
+								.replace(/{{person}}/,data.data[i].person)
+								.replace(/{{time}}/,data.data[i].time)
+								.replace(/{{like}}/,data.data[i].like)
+								.replace(/{{dislike}}/,data.data[i].dislike)
+								.replace(/{{comment}}/,data.data[i].comment);
+								
+          odiv.innerHTML=newdiv;
+          parent.appendChild(odiv);
+        }
+    });
+
+  }
+})
+</script>
+
+</head>
+
+<body>
+ <!--登录窗口-->
+<div class="ui-mask" id="mask" onselectstart="return false"></div>
+<div class="ui-dialog" id="dialogMove" onselectstart='return false;'>
+	<div class="ui-dialog-title" id="dialogDrag"  onselectstart="return false;" >
+		<span>U童趣</span>
+		<a class="ui-dialog-closebutton" href="javascript:void(0);" onclick="hideDialog();"></a>
+	</div>
+    <form id="login-form" method="post" action="#" name="loginform"> 
+	<div class="ui-dialog-content">
+		<div class="ui-dialog-l40 ui-dialog-pt15">
+			<input class="ui-dialog-input ui-dialog-input-username" type="text" maxlength="16" placeholder="用户名" />
+		</div>
+        
+		<div class="ui-dialog-l40 ui-dialog-pt15">
+			<input class="ui-dialog-input ui-dialog-input-password" type="password" maxlength="16" placeholder="密码" />
+		</div>
+        
+        <div style="top: 280px;" class="easytip-div login-uid">
+           <div class="easytip-text">用户名须为4—16位的英文字母或数字</div>
+           <div style=" top:15px;" class="easytip-arrow"></div>
+        </div>
+        <div style="top: 340px;" class="easytip-div login-upwd">
+           <div class="easytip-text">密码必须为6—16位的字母、数字或字符</div>
+           <div style="top: 15px;" class="easytip-arrow"></div>
+        </div>
+        
+		<div class="ui-dialog-l40 forget">
+			<a href="javascript:void(0);" onclick="LoginToRegister();">立即注册</a>&nbsp;<a href="#">忘记密码</a> 
+		</div>
+		<div>
+			<a class="ui-dialog-submit" href="#" >登录</a>
+		</div>
+	</div>
+    </form>
+</div>
+
+<!--注册窗口-->
+<div class="ui-registerDialog" id="registerDialogMove" onselectstart='return false;'>
+    <div class="ui-registerDialog-title" id="registerDialogDrag"  onselectstart="return false;" >
+		<span>U童趣</span>
+		<a class="ui-registerDialog-closebutton" href="javascript:void(0);" onclick="hideRegisterDialog();"></a>
+	</div>
+    <form id="reg-form"  method="post" action="#" name="registerform"><!--id="register-form"-->
+    <div class="ui-registerDialog-content">
+		<div class="ui-registerDialog-l40 ui-registerDialog-pt15">
+			<input class="ui-registerDialog-input ui-registerDialog-input-username" maxlength="16" placeholder="您想要的用户名" name="uid" type="text" id="uid" easyform="length:4-16;char-normal;real-time;" message="用户名必须为4—16位的英文字母或数字" easytip="disappear:lost-focus;theme:blue;" ajax-message="用户名已存在!" />
+        </div>
+        <div class="ui-registerDialog-l40 ui-registerDialog-pt15">
+			<input class="ui-registerDialog-input ui-registerDialog-input-password" type="password" maxlength="16" placeholder="密码" id="pwd1" easyform="length:6-16;" message="密码必须为6—16位" easytip="disappear:lost-focus;theme:blue;" />
+        </div>
+        <div class="ui-registerDialog-l40 ui-registerDialog-pt15">
+            <input class="ui-registerDialog-input ui-registerDialog-input-passwordOK" type="password" maxlength="16" placeholder="确认密码" id="pwd2" easyform="length:6-16;equal:#psw1;" message="两次密码输入要一致" easytip="disappear:lost-focus;theme:blue;" />
+            <input type="hidden" name="result" />
+        </div>
+        
+        <div style="top: 290px;" class="easytip-div register-uid">
+           <div class="easytip-text">用户名须为4—16位的英文字母或数字</div>
+           <div style=" top:15px;" class="easytip-arrow"></div>
+        </div>
+        <div style="top: 350px;" class="easytip-div register-upwd">
+           <div class="easytip-text">密码必须为6—16位的字母、数字或字符</div>
+           <div style="top: 15px;" class="easytip-arrow"></div>
+        </div>
+        <div style="top: 410px;" class="easytip-div register-upwdok">
+           <div class="easytip-text">两次密码输入要一致</div>
+           <div style="top: 15px;" class="easytip-arrow"></div>
+        </div>
+        
+        <div class="ui-registerDialog-l40 get">
+			<a >已有账号？</a>&nbsp;<a href="javascript:void(0);" onclick="RegisterToLogin();">登录到U童趣</a> 
+	    </div>
+  	    <div>
+		    <a class="ui-registerDialog-submit" href="#" >注册</a>
+        </div>
+     </div>
+    </form>
+</div>
+
+  <div id="page" class="page">
+      <div class="top">
+         
+         <div class="navbj"></div>
+         <div class="nav">
+            <div class="logo">
+               <a href="#"><span class="text">U童趣</span></a>
+            </div>
+            <div class="sosofornav">
+               <form method="get" action="#" class="soso" >
+                  <input id="query" type="text" size="27" autocomplete="off" placeholder="搜索你想要的" />
+                  <a href="#" class="go"><img src="images/soso.png" /></a>
+               </form>
+            </div>
+            <div class="tool">
+               <a id="register" href="javascript:void(0);" onclick="showRegisterDialog();"><span class="text">注册</span></a>
+               <a id="login" href="javascript:void(0);" onclick="showDialog();"><span class="text">登录</span></a>
+            </div>
+            <div class="utools">
+                <dl class="menu">
+                  <dt><img src="images/user2.png" /></dt>
+                  <dd>
+                      <a href="#" title=""><span><img src="images/user.png"/>我的童趣</span></a>
+                      <a href="#" title=""><span><img src="images/set.png"/>账号设置</span></a>
+                      <a href="#" title=""><span><img src="images/out.svg"/>注销登录</span></a>
+                  </dd>
+                </dl>
+               
+            </div>
+        </div>
+    
+        <div class="banner">
+           <!-- <p class="sosotitle">分享、搜索童年的乐趣</p>-->
+            <div class="soso">
+               <form method="get" action="#" class="soso" >
+                  <input id="query" type="text" size="27" autocomplete="off" placeholder="搜索你想要的" />
+                  <a href="#" class="go"><img src="images/soso.png" /></a>
+               </form>
+            </div>
+        </div>
+      </div>
+      
+      <div class="pagemain">
+          <div class="recommend-line">
+             <a>大家关注的</a>
+          </div>
+          <!--<div class="tqnav">
+               <a href="#" class="category-image login-category-image">
+                 <div class="blur"><img src="images/头像 (8).jpg" /></div>
+                 <div class="title">童趣图片</div>
+               </a>
+               <a href="#" class="category-image login-category-image">
+                 <div class="blur"><img src="images/头像 (8).jpg" /></div>
+                 <div class="title">童趣玩具</div>
+               </a>
+               <a href="#" class="category-image login-category-image">
+                 <div class="blur"><img src="images/头像 (8).jpg" /></div>
+                 <div class="title">童趣动漫</div>
+               </a>
+               <a href="#" class="category-image login-category-image">
+                 <div class="blur"><img src="images/头像 (8).jpg" /></div>
+                 <div class="title">童趣游戏</div>
+               </a>     
+          </div>-->
+<div class="case-content">
+    <div class="case-item">
+		<div class="ih-item circle effect1">
+			<a href="#">
+				<div class="spinner"></div>
+				<div class="img"><img src="images/111.jpg" alt="童趣回忆" height="200" width="200"></div>
+				<div class="info">
+					<div class="info-back">
+						<h3>童趣回忆</h3>
+						<p>寻找童年的记忆</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+    <div class="case-item">
+		<div class="ih-item circle effect1">
+			<a href="#">
+				<div class="spinner"></div>
+				<div class="img"><img src="images/111.jpg" alt="童趣玩具" height="200" width="200"></div>
+				<div class="info">
+					<div class="info-back">
+						<h3>童趣玩具</h3>
+						<p>寻找童年的乐趣</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+    <div class="case-item">
+		<div class="ih-item circle effect1">
+			<a href="#">
+				<div class="spinner"></div>
+				<div class="img"><img src="images/111.jpg" alt="童趣游戏" height="200" width="200"></div>
+				<div class="info">
+					<div class="info-back">
+						<h3>童趣游戏</h3>
+						<p>寻找童年的欢笑</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+    <div class="case-item">
+		<div class="ih-item circle effect1">
+			<a href="#">
+				<div class="spinner"></div>
+				<div class="img"><img src="images/111.jpg" alt="童趣动漫" height="200" width="200"></div>
+				<div class="info">
+					<div class="info-back">
+						<h3>童趣动漫</h3>
+						<p>寻找童年的热血</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div> 
+    <div class="case-item">
+		<div class="ih-item circle effect1">
+			<a href="#">
+				<div class="spinner"></div>
+				<div class="img"><img src="images/111.jpg" alt="童趣音律" height="200" width="200"></div>
+				<div class="info">
+					<div class="info-back">
+						<h3>童趣音律</h3>
+						<p>寻找童年的感动</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>            
+</div>
+          
+          <div class="recommend-line">
+             <a>大家推荐的</a>
+          </div>
+          
+          <div id="imgmain">
+            <div class="imgboxs">
+              <div class="pic images" style="width:270px">
+                <img src="images/111.jpg"  />
+                
+                <div class="imginfo">
+                  <div class="imsg" >
+                     <p style="width:250px; margin:0 auto;">
+                       <span style="font-size:20px; ">用户名</span>
+                     </p>
+                    
+                 </div>
+               </div>
+              
+               <div class="imginfo" >
+                  <div style="width:160px; margin:0 auto;">
+                    <div class="imsg">
+                      <p> <span>上次登录：</span></p>
+                      <p class="time">（2012-04-15 17:07:28）</p>
+                    </div>
+                  </div>
+                  
+               </div>
+
+              </div>
+              
+           </div>
+           
+           <div class="imgboxs" style="visibility:hidden; height:0;"></div>
+           <div class="imgboxs" style="visibility:hidden; height:0;"></div>
+           <div class="imgboxs" style="visibility:hidden; height:0;"></div>
+           <div class="imgboxs" style="visibility:hidden; height:0;"></div>
+          
+            <!-- loading按钮自己通过样式调整 -->
+            <div id="waterfall_loading" style="max-width:150px;line-height:50px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000; position:relative; bottom:-600px;margin:0 auto ;color:#fff;display:none">
+               <span>童趣加载中<img src="images/imgbox-spinner.gif" style=" height:11px; padding-top:5px;" /></span>
+            </div> 
+          </div>
+           
+           
+      </div>
+      
+      <div class="msg">
+      
+      </div>
+      
+      
+  </div>
+  <div id="tools">
+     <!--<a id="toTop" title="返回顶部" href="#top"><img src="images/2012042011441036.jpg" /></a>-->
+     <a id="toTop" title="返回顶部" href="javascript:void(0);" onclick="pageScroll();"><img src="images/top2.png" /></a>
+  </div>
+<script type="text/javascript" src="js/loginform.js"></script>
+<!--百度分享代码-->
+<script type="text/javascript" src="js/baiduShare.js"></script>
+
+<!--<script type="text/javascript" src="js/easyform.js"></script>-->
+<!--<script type="text/javascript">
+$("#register").click(function(){
+	$('#reg-form').easyform();
+});
+</script>-->
+</body>
+</html>

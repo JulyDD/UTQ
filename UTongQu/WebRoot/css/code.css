@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+.easytip-div{
+	text-align: left; position: fixed; z-index: 9999; width: 300px; left:61.5%;
+	}
+.easytip-text{
+	text-align: left; padding: 10px; min-width: 120px; color: rgb(255, 255, 255); 
+	background-color: rgba(51, 153, 204, 0.8); border: 1px solid rgb(102, 153, 204); border-radius: 5px;
+	}
+.easytip-arrow{
+	padding: 0px; margin: 0px; width: 0px; height: 0px; position: absolute; 
+	border-width: 10px; border-style: solid; border-color: transparent rgb(102, 153, 204) transparent transparent;
+	-moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; 
+	left: -20px;
+	}	
+	
