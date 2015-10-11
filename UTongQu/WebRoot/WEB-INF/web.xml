@@ -10,7 +10,8 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>userspages/login_main.jsp</welcome-file>
   </welcome-file-list>
-  
+    
+    <!-- struts2配置 -->
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -20,4 +21,11 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+    <!-- 404页面设置 -->
+    <error-page>
+       <error-code>404</error-code>
+       <location>/userspages/login_main.jsp</location>
+    </error-page>
+    
 </web-app>

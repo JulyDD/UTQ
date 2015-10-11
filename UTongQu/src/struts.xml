@@ -11,13 +11,13 @@
     
     
     
-    
-     <!-- <package name="default" namespace="/" extends="struts-default">
-       <default-action-ref name="index"></default-action-ref>
-       <action name="index">
-         <result>/users/Users_login.jsp</result>
+     <!-- 默认页设置/可设置为404页面 -->
+     <package name="notFound" extends="struts-default">
+       <default-action-ref name="notFound"></default-action-ref>
+       <action name="notFound">
+         <result>/userspages/login_main.jsp</result>
        </action>
-     </package> -->
+     </package>
      
     
    <!--  <package name="users" namespace="/users" extends="default">
