@@ -63,10 +63,7 @@ $(function(){
 			});
 		});
 	
-	waterFall("imgmain","imgboxs");
-    window.onresize=function(){
-      waterFall("imgmain","imgboxs");
-    }
+	
 })
 </script>
 </head>

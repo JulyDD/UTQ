@@ -33,7 +33,7 @@
                  <li><a href="#" title=""><span><img src="images/out.svg"/>注销登录</span></a></li>
                 </ul>
                 </dt>
-                <dd></dd>
+                <dd><a href="#" title="写童趣"><img src="images/write2.png" /></a></dd>
                </dl>
                
             </div>

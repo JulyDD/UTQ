@@ -35,47 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(function(){
     imgs();	/*调用图片弹窗的方法*/
 	$("#toTop").hide();
-	window.onresize=function(){
-	   if(openwindow!=""){
-	       if(openwindow=="showRegisterDialog"){
-	           showRegisterDialog();
-	       }else{
-	          showDialog();
-	       }
-	   }
-	};
+	$(".tool").css("visibility","hidden");
 	
-	$(".like").click(function() {
-			$.tipsBox({
-				obj: $(this),
-				str: "喜欢+1",
-                callback: function() {
-                    //alert(5);
-                }
-			});
-		});
-	$(".dislike").click(function() {
-			$.tipsBox({
-				obj: $(this),
-				str: "不喜欢+1",
-                callback: function() {
-                    //alert(5);
-                }
-			});
-		});
-	
-	 /*$('.file').change(function(){
-		   var $src=$('input[type="file"]').val();
-		   alert($src);
-		     $('#image').attr("src",$src);
-		   });
-	   	
-		*/	
-	
-	waterFall("imgmain","imgboxs");
-    window.onresize=function(){
-      waterFall("imgmain","imgboxs");
-    }
+
 })
 </script>
 </head>

@@ -57,7 +57,7 @@
 #page .pagemain .tqnav a .title{ width:90px; height:30px; margin:0 auto;
 	                        position:relative; top:-70%; font-size:22px; color:#FFF; line-height:100%;  font-weight:400}
 
-.msg{ width:80%; height:300px; position:relative; top:30px; margin:0 auto;  background:#999;}
+.msg{ width:80%; height:200px; position:relative; top:100px; margin:0 auto;  background:#D0EEFF;}
 
 
 #tools{ width:60px; height:60px; position:fixed; bottom:0; right:0; /*visibility:hidden;*/}

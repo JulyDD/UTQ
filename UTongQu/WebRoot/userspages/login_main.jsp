@@ -108,7 +108,7 @@ window.onload=function(){
               <%@include file="console/user_info.jsp" %>  
             </div>
            
-           <!-- 瀑布流BUG/占位 -->
+           <!-- 瀑布流BUG/占位   { display: none; /* 不占据空间，无法点击 */ } -->
            <div class="imgboxs" style="visibility:hidden; height:0;"></div>
            <div class="imgboxs" style="visibility:hidden; height:0;"></div>
            <div class="imgboxs" style="visibility:hidden; height:0;"></div>
