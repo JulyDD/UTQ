@@ -16,14 +16,6 @@
                <a id="login" href="javascript:void(0);" onclick="showDialog();"><span class="text">登录</span></a>
             </div>
             <div class="utools">
-                <!-- <dl class="menu">
-                  <dt><img src="images/user2.png" /></dt>
-                  <dd>
-                      <a href="#" title=""><span><img src="images/user.png"/>我的童趣</span></a>
-                      <a href="#" title=""><span><img src="images/set.png"/>账号设置</span></a>
-                      <a href="#" title=""><span><img src="images/out.svg"/>注销登录</span></a>
-                  </dd>
-                </dl> -->
                 <dl class="icos">
                  <dt id="menu">
                   <a href="#"><img src="images/user2.png" style="background:#666;" /></a>
@@ -33,9 +25,15 @@
                  <li><a href="#" title=""><span><img src="images/out.svg"/>注销登录</span></a></li>
                 </ul>
                 </dt>
-                <dd><a href="#" title="写童趣"><img src="images/write2.png" /></a></dd>
+                <dd><a href="#" title="写童趣"><img src="images/write.png" /></a></dd>
                </dl>
                
             </div>
            </div>
         </div>
+        <!-- 判断用户登录否/设置top工具 -->
+        <% if(session.getAttribute("user")==null){
+        	out.print("<script>$('.utools').css('display','none')</script>");
+        } else{
+        	out.print("<script>$('.tool').css('visibility','hidden')</script>");
+        }%>
