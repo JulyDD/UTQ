@@ -1,5 +1,8 @@
 // JavaScript Document
 
+//记录打开的窗口
+	var openwindow="";
+
 	//	获取元素对象	
 	function g(id){return document.getElementById(id);}
 
@@ -24,6 +27,7 @@
 
 	//	重新调整对话框的位置和遮罩，并且展现
 	function showDialog(){
+		openwindow="showDialog";
 		g('dialogMove').style.display = 'block';
 		//$(".ui-dialog").show(500);
 		g('mask').style.display = 'block';
@@ -33,6 +37,7 @@
 	
 	//显示注册对话框
 	function showRegisterDialog(){
+		openwindow="showRegisterDialog";
 	   	g('registerDialogMove').style.display = 'block';
 		g('mask').style.display = 'block';
 		autoCenter( g('registerDialogMove') );
@@ -42,12 +47,14 @@
 	
 	//	关闭注册对话框
 	function hideRegisterDialog(){
+		openwindow="";
 		g('registerDialogMove').style.display = 'none';
 		g('mask').style.display = 'none';
 	}
 
 	//	关闭登录对话框
 	function hideDialog(){
+		openwindow="";
 		g('dialogMove').style.display = 'none';
 		//$(".ui-dialog").hide(500);
 		g('mask').style.display = 'none';
@@ -63,9 +70,9 @@
 		showRegisterDialog()
     }
 	
-
+	
 	//	侦听浏览器窗口大小变化
-	window.onresize = showDialog;
+	//window.onresize = showDialog;
 
 	Dialog('dialogDrag','dialogMove');
 	showDialog();

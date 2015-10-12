@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+.utools{ width:100px; float:right;  }
+/* .menu{ min-width:100px; text-align:center; line-height:43px;}
+.menu dt{ width:43px; height:43px; color:#999; font-size:12px;}
+.menu dt img{ width:43px; height:43px; background:#999;}
+.menu dd a{ display:block; width:100px; height:43px; line-height:43px;  margin-top:1px; color:#fff; font-size:12px;
+            background:#000; opacity:0.6; 透明 -moz-opacity:0.6; -webkit-opacity:0.6;}
+.menu dd a img{ width:26px; height:26px; position:relative; top:9px; left:-5px;}
+.menu dd a:hover{ opacity:0.8; 透明 -moz-opacity:0.8; -webkit-opacity:0.8; }
+ */
+ 
+ .icos{width:100px; height:50px; float:right; margin-right:25px;}
+.icos dt{float:left; width:45px; height:45px;  text-align:center; position:relative; z-index:9;}
+.icos dt img{ width:45px; height:45px;}
+
+.icos dt ul{position:relative; z-index:7; display:none;}
+.icos dt:hover ul{ display:block;  }
+.icos dt ul li{width:120px; height:43px; background:#000; color:#fff; opacity:0.7; /*透明*/ -moz-opacity:0.7; -webkit-opacity:0.7; }
+.icos dt ul li a{display:block; width:120px; height:43px; line-height:43px; color:#FFF;
+                     font-size:12px; position:relative; 
+                     }
+ .icos dt ul li a img{ width:26px; height:26px; position:relative; top:9px; left:-5px;}					 
+ .icos dd{float:left; width:20px; height:20px; margin-left:20px; margin-top:6px;}
+.icos dt ul li:hover{opacity:0.9; -moz-opacity:0.9; -webkit-opacity:0.9; border-left:1px solid #ccc;  }
+
