@@ -22,6 +22,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate4.2.4-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/junit"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate4.3"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

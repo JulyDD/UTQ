@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
          <div class="navbj"></div>
         <div class="nav">
            <div class="nav-center">
@@ -18,11 +19,11 @@
             <div class="utools">
                 <dl class="icos">
                  <dt id="menu">
-                  <a href="#"><img src="images/user2.png" style="background:#666;" /></a>
+                  <a href="#"><img src="images/<s:if test="null==#session.userinfo">user2.png</s:if><s:else><s:property value="#session.userinfo.get(0).face"/></s:else>" style="background:#666;" /></a>
                  <ul>
                  <li><a href="#" title=""><span><img src="images/user.png"/>我的童趣</span></a></li>
                  <li><a href="#" title=""><span><img src="images/set.png"/>账号设置</span></a></li>
-                 <li><a href="#" title=""><span><img src="images/out.svg"/>注销登录</span></a></li>
+                 <li><a href="users/Users_loginout.action" title=""><span><img src="images/out.svg"/>注销登录</span></a></li>
                 </ul>
                 </dt>
                 <dd><a href="#" title="写童趣"><img src="images/write.png" /></a></dd>
@@ -32,8 +33,9 @@
            </div>
         </div>
         <!-- 判断用户登录否/设置top工具 -->
-        <% if(session.getAttribute("user")==null){
+        <% if(session.getAttribute("userinfo")==null){
         	out.print("<script>$('.utools').css('display','none')</script>");
         } else{
         	out.print("<script>$('.tool').css('visibility','hidden')</script>");
         }%>
+        

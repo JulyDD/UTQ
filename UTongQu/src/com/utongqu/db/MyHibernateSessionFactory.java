@@ -16,13 +16,10 @@ public class MyHibernateSessionFactory {
 	public static SessionFactory getsSessionFactory() {
 		if (sessionFactory == null) {
 			Configuration cfg = new Configuration().configure();
-			
 			StandardServiceRegistryBuilder standardServiceRegistryBuilder =
 					new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
-			
 			StandardServiceRegistry standardServiceRegistry = standardServiceRegistryBuilder.build();
-			
-			sessionFactory = cfg.buildSessionFactory(standardServiceRegistry);
+			SessionFactory sessionFactory = cfg.buildSessionFactory(standardServiceRegistry);
 			return sessionFactory;
 		} else {
 			return sessionFactory;

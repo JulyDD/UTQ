@@ -15,18 +15,18 @@
      <package name="notFound" extends="struts-default">
        <default-action-ref name="notFound"></default-action-ref>
        <action name="notFound">
-         <result>/userspages/login_main.jsp</result>
+         <result>/userspages/Users_login.jsp</result>
        </action>
      </package>
      
     
-   <!--  <package name="users" namespace="/users" extends="default">
-       <action name="*_*" class="action.{1}Action" method="{2}">
-         <result name="success">/users/Users_login_success.jsp</result>
-         <result name="login">/users/Users_login.jsp</result>
-         <result name="loginout_success">/users/Users_login.jsp</result>
+    <package name="users" namespace="/users" extends="struts-default">
+       <action name="*_*" class="com.utongqu.action.{1}Action" method="{2}">
+         <result name="success">/userspages/Users_login.jsp</result>
+         <result name="login">/userspages/Users_login.jsp</result>
+         <result name="loginout_success">/userspages/Users_login.jsp</result>
        </action>
-    </package> -->
+    </package>
     
     <!-- <package name="students" namespace="/students" extends="struts-default">
        <action name="*_*" class="action.{1}Action" method="{2}">

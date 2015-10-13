@@ -6,14 +6,14 @@
 		<span>U童趣</span>
 		<a class="ui-dialog-closebutton" href="javascript:void(0);" onclick="hideDialog();"></a>
 	</div>
-    <form id="login-form" method="post" action="#" name="loginform"> 
+    <form id="login-form" method="post" action="users/Users_login.action" name="loginform"> 
 	<div class="ui-dialog-content">
 		<div class="ui-dialog-l40 ui-dialog-pt15">
-			<input class="ui-dialog-input ui-dialog-input-username" type="text" maxlength="16" placeholder="用户名" />
+			<input class="ui-dialog-input ui-dialog-input-username" type="text" maxlength="16" name="users.username" placeholder="用户名" />
 		</div>
         
 		<div class="ui-dialog-l40 ui-dialog-pt15">
-			<input class="ui-dialog-input ui-dialog-input-password" type="password" maxlength="16" placeholder="密码" />
+			<input class="ui-dialog-input ui-dialog-input-password" type="password" maxlength="16" name="users.password" placeholder="密码" />
 		</div>
         
         <div style="top: 280px;" class="easytip-div login-uid">
@@ -29,7 +29,8 @@
 			<a href="javascript:void(0);" onclick="LoginToRegister();">立即注册</a>&nbsp;<a href="#">忘记密码</a> 
 		</div>
 		<div>
-			<a class="ui-dialog-submit" href="#" >登录</a>
+			
+			<input type="submit" class="ui-dialog-submit" value="登录"/>
 		</div>
 	</div>
     </form>

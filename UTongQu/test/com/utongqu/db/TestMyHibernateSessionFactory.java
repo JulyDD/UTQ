@@ -45,14 +45,20 @@ public class TestMyHibernateSessionFactory {
 		Session session=MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Users u1=new Users();
-		u1.setUid(2);
+		u1.setUid(1);
 		u1.setUsername("test");
 		u1.setPassword("111111");
 		u1.setJoinDate(new Date());
 		u1.setBirthday(new Date());
 		u1.setGender(-1);
-		u1.setFace("1"+new Date()+".jpg");		
+		u1.setFace("2.jpg");	
+		
+		Users u2=new Users(2, "zhangsan", "111111", "111.jpg", 0, new Date(), "不知道", "不知道", "123@qq.com", new Date(), new Date(), "你是谁", "我是我");
+		Users u3=new Users(3, "july", "111111", "1.jpg", 0, new Date(), "不知道", "不知道", "231@qq.com", new Date(), new Date(), "你是谁", "我是我");
+		
 		session.save(u1);
+		session.save(u2);
+		session.save(u3);
 		session.getTransaction().commit();
 	}
 	
