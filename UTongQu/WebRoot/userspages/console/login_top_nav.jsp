@@ -19,14 +19,14 @@
             <div class="utools">
                 <dl class="icos">
                  <dt id="menu">
-                  <a href="#"><img src="images/<s:if test="null==#session.userinfo">user2.png</s:if><s:else><s:property value="#session.userinfo.get(0).face"/></s:else>" style="background:#666;" /></a>
+                  <a href="#" title="账户管理"><img src="images/<s:if test="null==#session.userinfo">user2.png</s:if><s:else><s:property value="#session.userinfo.get(0).face"/></s:else>" style="background:#666;" /></a>
                  <ul>
                  <li><a href="#" title=""><span><img src="images/user.png"/>我的童趣</span></a></li>
-                 <li><a href="#" title=""><span><img src="images/set.png"/>账号设置</span></a></li>
+                 <li><a href="users/Users_enterTheToolsPage.action" title=""><span><img src="images/set.png"/>账号设置</span></a></li>
                  <li><a href="users/Users_loginout.action" title=""><span><img src="images/out.svg"/>注销登录</span></a></li>
                 </ul>
                 </dt>
-                <dd><a href="#" title="写童趣"><img src="images/write.png" /></a></dd>
+                <dd><a href="users/Users_enterTheWritingPage.action" title="写内容"><img src="images/write.png" /></a></dd>
                </dl>
                
             </div>

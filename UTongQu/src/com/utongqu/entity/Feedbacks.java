@@ -13,10 +13,10 @@ public class Feedbacks {
 	private int fid;                     //反馈id
 	private int feedbackUID;             //反馈者id
 	private String feedbackContent;      //反馈内容
-	private Date feedbackDate;           //反馈日期
+	private String feedbackDate;           //反馈日期
 	private int processingMID;           //处理者id
 	private String processingContent;    //处理内容
-	private Date processingDate;         //处理时间
+	private String processingDate;         //处理时间
 
 	//Getters and Setters
 	@Id
@@ -39,10 +39,10 @@ public class Feedbacks {
 	public void setFeedbackContent(String feedbackContent) {
 		this.feedbackContent = feedbackContent;
 	}
-	public Date getFeedbackDate() {
+	public String getFeedbackDate() {
 		return feedbackDate;
 	}
-	public void setFeedbackDate(Date feedbackDate) {
+	public void setFeedbackDate(String feedbackDate) {
 		this.feedbackDate = feedbackDate;
 	}
 	public int getProcessingMID() {
@@ -57,10 +57,10 @@ public class Feedbacks {
 	public void setProcessingContent(String processingContent) {
 		this.processingContent = processingContent;
 	}
-	public Date getProcessingDate() {
+	public String getProcessingDate() {
 		return processingDate;
 	}
-	public void setProcessingDate(Date processingDate) {
+	public void setProcessingDate(String processingDate) {
 		this.processingDate = processingDate;
 	}
 	
@@ -70,8 +70,8 @@ public class Feedbacks {
     }	
     //带全属性构造方法
 	public Feedbacks(int fid, int feedbackUID, String feedbackContent,
-			Date feedbackDate, int processingMID, String processingContent,
-			Date processingDate) {
+			String feedbackDate, int processingMID, String processingContent,
+			String processingDate) {
 		super();
 		this.fid = fid;
 		this.feedbackUID = feedbackUID;

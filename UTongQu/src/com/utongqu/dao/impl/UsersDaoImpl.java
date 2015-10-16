@@ -38,37 +38,75 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	@Override
-	public int register(String username, String password) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/*@Override
-	public List<Users> findUser(String username) {
+	public boolean register(Users user) {
 		// TODO Auto-generated method stub
 		Transaction tx=null;
-		List<Users> list=null;
-		String hql="";
 		try{
 			Session session=MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
 			tx=session.beginTransaction();
-			hql="from Users where username =?";
-			Query q=session.createQuery(hql);
-			q.setParameter(0,username);
-			list =q.list();
+			session.save(user);
 			tx.commit();
-			return list;
+			return true;
 		}catch(Exception ex){
 			ex.printStackTrace();
 			tx.commit();
-			return list;
+			return false;
 		}finally{
 			if(tx!=null){
 				tx=null;
 			}
 		}
-	}*/
+	}
 
+	@Override
+	public int findUserName(String username) {
+		Transaction transaction=null;
+		System.out.println("userdao:"+username);
+		try {
+			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
+			String hql =  "select count(username) from Users where username =?";
+			transaction = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			query.setParameter(0, username);
+			int size=(int)(long)query.uniqueResult();
+			transaction.commit();
+			return size;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally{
+			if (transaction != null) {
+				transaction = null;
+			}
+		}
+
+	}
+
+	@Override
+	public int updateUserBasicInfo(int gender, String birthday, String address,
+			String job,String username) {
+		Transaction transaction=null;
+		try {
+			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
+			String hql =  "update Users u set u.gender=?,u.birthday=?,u.address=?,u.job=? where username=?";
+			transaction = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			query.setParameter(0, gender);
+			query.setParameter(1, birthday);
+			query.setParameter(2, address);
+			query.setParameter(3, job);
+			query.setParameter(4, username);
+			int size=(int)(long)query.uniqueResult();
+			transaction.commit();
+			return size;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally{
+			if (transaction != null) {
+				transaction = null;
+			}
+		}
+	}
 	
-
 }

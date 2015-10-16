@@ -11,6 +11,7 @@ $(function(){
 		}else{
 			$(".login-uid").hide(200);
 			}
+
 	});
 	//判断登录密码
 	$(".ui-dialog-input-password").blur(function(){
@@ -23,31 +24,95 @@ $(function(){
 		});
 	
 	//判断注册用户名
-  $(".ui-registerDialog-input-username").blur(function(){
-	var username=$.trim($(this).val());
-	if(!namereg.test(username)){
-		$(".register-uid").show(300);
-		}else{
-			$(".register-uid").hide(200);
-			}
-	});
+    $(".ui-registerDialog-input-username").blur(function(){findUserName()});
+  
 	//判断注册密码
-	$(".ui-registerDialog-input-password").blur(function(){
-		var password=$.trim($(this).val());
-		if(!pwdreg.test(password)){
-			$(".register-upwd").show(300);
-			}else{
-				$(".register-upwd").hide(200);
-				}
-		});
+	$(".ui-registerDialog-input-password").blur(function(){checkRegPwd()});
+	
 	//判断注册确认密码
-	$(".ui-registerDialog-input-passwordOK").blur(function(){
+	$(".ui-registerDialog-input-passwordOK").blur(function(){checkRegPwdOK()});
+	
+})
+
+
+  //判断注册用户名
+  function findUserName(){
+		var username=$.trim($(".ui-registerDialog-input-username").val());
+		var bRet=false;
+			$.ajax({  
+				type:"POST",
+		        url:"users/Users_findUserName.action",  
+		        data: "username="+username,//传参  
+		        dataType: "json",
+		        cache : false,  
+		        async : false, 
+		        success:function(msg){  
+		            document.getElementById("Reg-uname").innerHTML=msg.msg;  
+		            $(".register-uid").show(300);
+		            
+		            if(msg.iRet=="1"){
+		            	bRet=true;
+		            }else{
+		            	bRet=false;
+		            }
+		          
+		        },  
+		        error:function(data){  
+		        	bRet=false;
+		            }  
+		        }); 
+			
+			 return bRet;
+
+		}
+  
+  
+	//判断注册密码
+	function checkRegPwd(){
 		var password=$.trim($(".ui-registerDialog-input-password").val());
-		var passwordOK=$.trim($(this).val());
-		if(!pwdreg.test(passwordOK)&&passwordOK!=password){
+		var bRet=false;
+		if(!pwdreg.test(password)){
+            document.getElementById("Reg-pwd").innerHTML='密码必须为6—16位的字母、数字或字符';
+            bRet=false;
+			}else{
+				document.getElementById("Reg-pwd").innerHTML='密码可使用'
+					bRet=true;
+				}
+		    $(".register-upwd").show(300);
+		    return bRet;
+		}
+	
+	//判断注册确认密码
+	function checkRegPwdOK(){
+		var password=$.trim($(".ui-registerDialog-input-password").val());
+		var passwordOK=$.trim($(".ui-registerDialog-input-passwordOK").val());
+		var bRet=false;
+		if(passwordOK!=password){
+			document.getElementById("Reg-pwd-ok").innerHTML='两次密码输入要一致';
+			bRet=false;
 			$(".register-upwdok").show(300);
 			}else{
+				bRet=true;
 				$(".register-upwdok").hide(200);
 				}
-		});
-})
+		return bRet;
+		}
+
+
+   //注册判断
+	function checkReg(){
+		if(!findUserName()){
+			 $("input[name=users.username]").focus();
+			 return;
+		}else if(!checkRegPwd()){
+			$("input[name=users.password]").focus();
+			return;
+		}else if(!checkRegPwdOK()){
+			$("input[name=users.passwordConfirmation]").focus();
+			return;
+		}else{
+			$("#reg-form").submit();
+		}
+		
+			
+	}

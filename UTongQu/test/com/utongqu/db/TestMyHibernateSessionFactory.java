@@ -2,6 +2,7 @@ package com.utongqu.db;
 
 import static org.junit.Assert.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -39,7 +40,9 @@ public class TestMyHibernateSessionFactory {
 		
 		export.create(true,true);
 	}
-	
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd : HH:mm:ss");
+	SimpleDateFormat bir=new SimpleDateFormat("yyyy-MM-dd");
+	Date date=new Date();
 	@Test
 	public void testSaveUsers(){
 		Session session=MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
@@ -48,13 +51,13 @@ public class TestMyHibernateSessionFactory {
 		u1.setUid(1);
 		u1.setUsername("test");
 		u1.setPassword("111111");
-		u1.setJoinDate(new Date());
-		u1.setBirthday(new Date());
+		u1.setJoinDate(sdf.format(date));
+		u1.setBirthday(bir.format(date));
 		u1.setGender(-1);
 		u1.setFace("2.jpg");	
 		
-		Users u2=new Users(2, "zhangsan", "111111", "111.jpg", 0, new Date(), "不知道", "不知道", "123@qq.com", new Date(), new Date(), "你是谁", "我是我");
-		Users u3=new Users(3, "july", "111111", "1.jpg", 0, new Date(), "不知道", "不知道", "231@qq.com", new Date(), new Date(), "你是谁", "我是我");
+		Users u2=new Users(2, "zhangsan", "111111", "111.jpg", 0, bir.format(date), "不知道", "不知道", "123@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
+		Users u3=new Users(3, "july", "111111", "1.jpg", 0, bir.format(date), "不知道", "不知道", "231@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
 		
 		session.save(u1);
 		session.save(u2);

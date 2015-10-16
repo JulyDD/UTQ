@@ -36,5 +36,12 @@ private static SessionFactory sf;
 		UsersDao udao=new UsersDaoImpl();
 		assertThat(udao.login(u.getUsername(),u.getPassword()),is(1));
 	}*/
+	
+	@Test
+	public void testFindUserName(){
+	     UsersDao udao=new UsersDaoImpl();
+	     int size=udao.findUserName("july1");
+	     System.out.println(size);
+	}
 
 }

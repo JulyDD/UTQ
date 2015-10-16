@@ -14,14 +14,14 @@ public class Managers {
 	private String managerName;   //manager login name
 	private String password;      //manager login password
 	private String email;         //manager email *
-	private Date joinDate;        //manager join date
+	private String joinDate;        //manager join date
 	private int Level;            //manager level
 	private String face;          //manager face-image
 	private int gender;           //manager sex
-	private Date birthday;        //manager birthday / age
+	private String birthday;        //manager birthday / age
 	private String address;       //manager address
 	private String job;           //manager job
-	private Date lastLoginDate; //manager last login date
+	private String lastLoginDate; //manager last login date
 	private String question;      //密保问题
 	private String answer;        //密保答案
 
@@ -52,10 +52,10 @@ public class Managers {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return joinDate;
 	}
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
 	public String getFace() {
@@ -70,10 +70,10 @@ public class Managers {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getAddress() {
@@ -88,10 +88,10 @@ public class Managers {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public Date getLastLoginDate() {
+	public String getLastLoginDate() {
 		return lastLoginDate;
 	}
-	public void setLastLoginDate(Date lastLoginDate) {
+	public void setLastLoginDate(String lastLoginDate) {
 		this.lastLoginDate = lastLoginDate;
 	}
 	public String getQuestion() {
@@ -118,8 +118,8 @@ public class Managers {
 	}
 	//带全属性构造方法
 	public Managers(int mid, String managerName, String password, String email,
-			Date joinDate, int level, String face, int gender, Date birthday,
-			String address, String job, Date lastLoginDate, String question,
+			String joinDate, int level, String face, int gender, String birthday,
+			String address, String job, String lastLoginDate, String question,
 			String answer) {
 		super();
 		this.mid = mid;

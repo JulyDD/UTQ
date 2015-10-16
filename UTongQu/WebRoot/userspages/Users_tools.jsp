@@ -31,6 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery.imgbox.pack.js"></script><!--图片放大效果-->
 <script type="text/javascript" src="js/laydate.js"></script><!--日期插件效果-->
 <script type="text/javascript" src="js/file.js"></script><!--上传预览效果-->
+<script type="text/javascript" src="js/update.js"></script><!--update-->
 <script type="text/javascript">  
 $(function(){
     imgs();	/*调用图片弹窗的方法*/
@@ -40,6 +41,7 @@ $(function(){
 
 })
 </script>
+
 </head>
 
 <body>
@@ -61,21 +63,22 @@ $(function(){
                        <form method="post" name="userinfo" action="#">
                         <li>
                            <table>
-                             <tr><td class="name">登录名：</td><td><input type="text" disabled="disabled" value="xxxx" class="clear-input" /></td><td></td></tr>
+                             <tr><td class="name">登录名：</td><td><input type="text" disabled="disabled" name="users.username" value="<s:property value="#session.userinfo.get(0).username"/>" class="clear-input update-name" /></td><td></td></tr>
                              <tr><td class="name">性别：</td>
-                                  <td><label class="sex"><input type="radio" name="sex" value="1" />男</label>
-                                      <label class="sex"><input type="radio" name="sex" value="0" />女</label>
-                                      <label class="sex"><input type="radio" name="sex" value="-1" checked="checked" />保密</label>
+                                  <td>
+                                      <label class="sex"><input type="radio" name="users.gender" value="1" <s:if test="#session.userinfo.get(0).gender==1">checked="checked"</s:if> />男</label>
+                                      <label class="sex"><input type="radio" name="users.gender" value="0" <s:if test="#session.userinfo.get(0).gender==0">checked="checked"</s:if>/>女</label>
+                                      <label class="sex"><input type="radio" name="users.gender" value="-1" <s:if test="#session.userinfo.get(0).gender==-1">checked="checked"</s:if> />保密</label>
                                   </td>
                                    
                                   <td>
                                   
                               </td></tr>
                              
-                             <tr><td class="name">生日：</td><td><input class="laydate-icon clear-input" id="demo" name="data"  > </td><td></td></tr>
-                             <tr><td class="name">所在城市：</td><td><input type="text" placeholder="说说你的城市吧" name="city" class="clear-input" /></td><td></td></tr>
-                             <tr><td class="name">职业：</td><td><input type="text" placeholder="说说你的职业吧" name="job" class="clear-input" /></td><td></td></tr>
-                             <tr><td></td><td colspan="2"><a href="#" onclick="" class="submit-btn">保存</a></td></tr>
+                             <tr><td class="name">生日：</td><td><input class="laydate-icon clear-input update-birthday" id="demo" name="users.birthday" value="<s:property value="#session.userinfo.get(0).birthday"/>" > </td><td></td></tr>
+                             <tr><td class="name">所在城市：</td><td><input type="text" placeholder="说说你的城市吧" name="users.address" class="clear-input update-address" value="<s:property value="#session.userinfo.get(0).address"/>" /></td><td></td></tr>
+                             <tr><td class="name">职业：</td><td><input type="text" placeholder="说说你的职业吧" name="users.job" class="clear-input update-job" value="<s:property value="#session.userinfo.get(0).job"/>" /></td><td></td></tr>
+                             <tr><td></td><td colspan="2"><a href="javascript:;" onclick="updateUserBasicInfo();" class="submit-btn">保存</a></td></tr>
                            </table>
                         </li>
                        </form>
@@ -88,7 +91,7 @@ $(function(){
                         <form action="#" method="post" name="headform" enctype="multipart/form-data">
                           <table>
                            <tbody>
-                            <tr><td><img id="image" src="images/head-one.jpg" width="200px" style="padding:5px; border:1px solid #ccc; max-height:500px;" /></td>
+                            <tr><td><img id="image" src="images/<s:property value="#session.userinfo.get(0).face"/>" width="200px" style="padding:5px; border:1px solid #ccc; max-height:500px;" /></td>
                             
                             <td><a href="javascript:;" id="file" class="file">选择文件<input type="file" name="file" id="file_input" onchange="previewFile()"  /></a></td></tr>
                            </tbody>
@@ -122,7 +125,9 @@ $(function(){
             </ul>
           </div> 
           
-         
+         <div  style="max-width:150px;line-height:50px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000; position:relative; z-index:999; bottom:-400px;margin:0 auto ;color:#fff;display:none">
+               <span><span class="update-msg"></span><img src="images/imgbox-spinner.gif" style=" height:11px; padding-top:5px;" /></span>
+         </div> 
       </div>
         
       

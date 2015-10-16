@@ -15,7 +15,7 @@ public class Music {
 	private String musicNewName;            //music new name
 	private String musicImg;                //music head
 	private String musicSinger;             //music singer
-	private Date uploadTime;                //upload Time
+	private String uploadTime;                //upload Time
 
 	//Getters and Setters
 	@Id
@@ -50,10 +50,10 @@ public class Music {
 	public void setMusicSinger(String musicSinger) {
 		this.musicSinger = musicSinger;
 	}
-	public Date getUploadTime() {
+	public String getUploadTime() {
 		return uploadTime;
 	}
-	public void setUploadTime(Date uploadTime) {
+	public void setUploadTime(String uploadTime) {
 		this.uploadTime = uploadTime;
 	}
 	
@@ -63,7 +63,7 @@ public class Music {
 	}
 	//带全属性构造方法
 	public Music(int musicID, String musicOldName, String musicNewName,
-			String musicImg, String musicSinger, Date uploadTime) {
+			String musicImg, String musicSinger, String uploadTime) {
 		super();
 		this.musicID = musicID;
 		this.musicOldName = musicOldName;

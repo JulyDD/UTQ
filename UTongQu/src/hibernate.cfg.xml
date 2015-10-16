@@ -14,17 +14,17 @@
         <property name="dialect">org.hibernate.dialect.SQLServerDialect</property> -->
         
         <!-- mysql配置 -->
-        <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/UTQ</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
          
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property> -->
         
        <!--
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>

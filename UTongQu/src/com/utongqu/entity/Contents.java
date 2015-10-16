@@ -14,7 +14,7 @@ public class Contents {
 	private int contentUID;              //发布内容的用户的id
 	private String image;                //内容附带的image;
 	private String content;              //内容 
-	private Date contentDate;            //发布内容的时间
+	private String contentDate;            //发布内容的时间
 
 	//Getters and Setters
 	@Id
@@ -43,10 +43,10 @@ public class Contents {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getContentDate() {
+	public String getContentDate() {
 		return contentDate;
 	}
-	public void setContentDate(Date contentDate) {
+	public void setContentDate(String contentDate) {
 		this.contentDate = contentDate;
 	}
 	//空构造方法
@@ -55,7 +55,7 @@ public class Contents {
 	}
 	//带全属性构造方法
 	public Contents(int contentID, int contentUID, String image,
-			String content, Date contentDate) {
+			String content, String contentDate) {
 		super();
 		this.contentID = contentID;
 		this.contentUID = contentUID;
