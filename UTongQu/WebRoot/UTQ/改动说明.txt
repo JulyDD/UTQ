@@ -1,0 +1,5 @@
+2015,10,16
+1.	新增images_new文件夹存放图片，新增js_new文件夹存放js
+2.	添加上传头像功能，将原先的img标签换为div标签作为容器，注释原先的上传js，移除了上传按钮内联的onchange事件，添加编辑完成按钮和提交图片按钮。
+3.	添加avatarUpload_example.php模拟后台图片处理，提交的图片存放在imags_newwen文件夹中。
+3.	setting.css中添加img {border:none},解决ie9及以下图片有边框的问题
