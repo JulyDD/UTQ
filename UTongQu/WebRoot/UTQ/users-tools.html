@@ -26,7 +26,8 @@
 <script type="text/javascript" src="js/zhan2.js"></script><!--点赞效果-->
 <script type="text/javascript" src="js/jquery.imgbox.pack.js"></script><!--图片放大效果-->
 <script type="text/javascript" src="js/laydate.js"></script><!--日期插件效果-->
-<script type="text/javascript" src="js/file.js"></script><!--上传预览效果-->
+<!--<script type="text/javascript" src="js/file.js"></script>上传预览效果-->
+<script type="text/javascript" src="js_new/AvatarUpload.js"></script><!--新增头像上传效果-->
 <script type="text/javascript">  
 $(function(){
     imgs();	/*调用图片弹窗的方法*/
@@ -63,7 +64,15 @@ $(function(){
     window.onresize=function(){
       waterFall("imgmain","imgboxs");
     }
+
+
 })
+</script>
+<script>
+	 //调用头像上传函数
+    window.onload=function(){
+    getFileImg("file_input","image","avatar_finish","avatar_push","avatarUpload_example.php");
+    }
 </script>
 </head>
 
@@ -144,9 +153,9 @@ $(function(){
                         <form action="#" method="post" name="headform" enctype="multipart/form-data">
                           <table>
                            <tbody>
-                            <tr><td><img id="image" src="images/head-one.jpg" width="200px" style="padding:5px; border:1px solid #ccc; max-height:500px;" /></td>
+                            <tr><td><div id="image" style="padding:5px; border:1px solid #ccc;width:300px;height:300px;"></div></td>
                             
-                            <td><a href="javascript:;" id="file" class="file">选择文件<input type="file" name="file" id="file_input" onchange="previewFile()"  /></a></td></tr>
+                            <td><a href="javascript:;" id="file" class="file">选择文件<input type="file" name="file" id="file_input" onchange=""  /></a><button id="avatar_finish" onclick="return false">完成</button>&nbsp&nbsp<button id="avatar_push" onclick="return false">提交</button></td></tr>
                            </tbody>
                           </table>
                         </form>
