@@ -29,18 +29,23 @@
          <result name="findUserName">/userspages/Users_login.jsp</result><!-- 查找用户名 -->
          <result name="WritingPage">/userspages/Users_publish.jsp</result><!-- 进入写童趣页面 -->
          <result name="toolsPage">/userspages/Users_tools.jsp</result><!-- 进入账户设置页面 -->
+         <result name="backtoolsPage">/userspages/Users_tools.jsp</result><!-- 返回账户设置页面 -->
        </action>
     </package>
-    
-    <!-- <package name="students" namespace="/students" extends="struts-default">
-       <action name="*_*" class="action.{1}Action" method="{2}">
-          <result name="query_success">/students/Students_query_success.jsp</result>
-          <result name="add_success">/students/Students_add_success.jsp</result>
-           <result name="save_success">/students/Students_modify_success.jsp</result>
-          <result name="modify_success" >/students/Students_modify.jsp</result>
-           
-          <result name="delete_success" type="chain">Students_query</result>
+    <!-- 文件上传 -->
+    <package name="upload"  extends="struts-default" namespace="/" >
+       <action name="fileUpload" class="com.utongqu.action.FileUploadAction" >
+         <param name="savePath">/images</param><!-- 配置文件上传目录 -->
+         <!-- 配置文件上传拦截器 -->
+         <interceptor-ref name="fileUpload">
+             <param name="allowedTypes">
+                 image/jpg,image/jpeg,image/png,image/bmp,image/pjpeg
+             </param>
+             <param name="maximumSize">1024000</param><!-- 1M -->
+         </interceptor-ref>
+         <interceptor-ref name="defaultStack"></interceptor-ref>
+         <result name="success">/userspages/Users_tools.jsp</result>
        </action>
-    </package> -->
+    </package>
 
 </struts>

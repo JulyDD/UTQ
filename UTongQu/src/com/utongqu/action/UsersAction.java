@@ -114,19 +114,32 @@ public class UsersAction extends SuperAction  {
 	
 	//修改用户基本资料
 	public String updateUserBasicInfo() throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
 		String username = request.getParameter("username");
 		int gender =Integer.parseInt(request.getParameter("gender"));
 		String birthday = request.getParameter("birthday");
 		String address = request.getParameter("address");
 		String job = request.getParameter("job");
+		/*System.out.println(users.getGenders());
+		users.setGender(Integer.parseInt(users.getGenders()));
+		System.out.println(users.getUsername());*/
+		System.out.println(username);
+		System.out.println(gender);
 		UsersDao udao=new UsersDaoImpl();
 		String responseStr = "";
+		//int iRet=udao.updateUserBasicInfo(users.getGender(), users.getBirthday(), users.getAddress(), users.getJob(), users.getUsername());
 		int iRet=udao.updateUserBasicInfo(gender, birthday, address, job, username);
-		if (0<iRet) {
-			responseStr ="{'msg':'修改成功'}";
-		} else {
-			responseStr ="{'msg':'未能修改'}";
+		if (iRet>0) {
+			List<Users> list=udao.findUsersByUsername(username);
+			if(list.size()>0){
+				session.setAttribute("userinfo", list);
+			}
+			responseStr ="{\"msg\":\"更新成功了哦\"}";
+			
+		} else{
+			responseStr ="{\"msg\":\"更新失败了哦\"}";
 		}
+		System.out.println(responseStr);
 		response.getWriter().print(responseStr);
 		return null;
 	}

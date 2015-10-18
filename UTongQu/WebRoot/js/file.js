@@ -1,32 +1,11 @@
 // JavaScript Document
-/*$(function(){
-	$("#file").change(function(){
-	var objUrl = getObjectURL(this.files[0]) ;
-	console.log("objUrl = "+objUrl) ;
-	if (objUrl) {
-		$("#image").attr("src", objUrl) ;
-	}
-	}) ;
-	//建立一個可存取到該file的url
-	function getObjectURL(file) {
-		var url = null ; 
-		if (window.createObjectURL!=undefined) { // basic
-			url = window.createObjectURL(file) ;
-		} else if (window.URL!=undefined) { // mozilla(firefox)
-			url = window.URL.createObjectURL(file) ;
-		} else if (window.webkitURL!=undefined) { // webkit or chrome
-			url = window.webkitURL.createObjectURL(file) ;
-		}
-		return url ;
-	}
-	
-	})*/
+
 var lastfile="images/head-one.jpg";
 function previewFile() {
-  var preview = document.querySelector('#image');
+	alert('test action');
+ /* var preview = document.querySelector('#image');
   var file    = document.querySelector('input[type=file]').files[0];
   var reader  = new FileReader();
-
   reader.onloadend = function () {
     preview.src = reader.result;
   }
@@ -35,54 +14,96 @@ function previewFile() {
     reader.readAsDataURL(file);
   } else {
     preview.src = lastfile;
-  }
+  }*/
+  
+	var username=$(".update-name").val();
+	var file=document.querySelector('input[type=file]').files[0];
+	alert(file);
+  $.ajax({  
+	  type:"POST",
+      url:"fileUpload.action", 
+      fileElementId : "upload",
+      data:"username="+username+"&upload="+file,
+      dataType: "json",
+      cache : false,  
+      async : false, 
+      success:function(msg){  
+      	console.log(msg.msg);
+          document.getElementById("update-msg").innerHTML=msg.msg;  
+          //继续写jq的定时器实现修改提示
+          
+          $(".update-loading").toggle(2000,function(){
+              $(".update-loading").toggle(1500);
+          });
+      },  
+      error:function(data){  
+      	console.log(data);
+          }  
+      }); 
+  
+  
 }
 
-   /* // 详情介绍页面
-    var result = $("#image"); //获得最后图片显示的img
-    var input = $("#file_input");
 
-    //检测浏览器是否兼容FileReader因为这个 html5的新特性
-    if (typeof FileReader === 'undefined') {
-        alert("抱歉，你的浏览器不支持 FileReader");
-        input[0].setAttribute('disabled', 'disabled');
-        //这里加个[0]将jquery对象转化成dom对象
-    } else {
-        input.get(0).addEventListener('change', readFile, false);//同上
+
+/*function UpladFile() {
+
+    var fileObj = document.getElementByIdx_x_x("file").files[0]; // js 获取文件对象
+
+    var FileController = "../file/save";                    // 接收上传文件的后台地址 
+
+
+
+    // FormData 对象
+
+    var form = new FormData();
+
+    form.append("author", "hooyes");                        // 可以增加表单数据
+
+    form.append("file", fileObj);                           // 文件对象
+
+
+
+    // XMLHttpRequest 对象
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("post", FileController, true);
+
+    xhr.onload = function () {
+
+       // alert("上传完成!");
+
+    };
+
+    xhr.upload.addEventListener("progress", progressFunction, false);
+
+    
+
+    xhr.send(form);
+
+
+
+}
+
+function progressFunction(evt) {
+
+    var progressBar = document.getElementByIdx_x_x("progressBar");
+
+    var percentageDiv = document.getElementByIdx_x_x("percentage");
+
+    if (evt.lengthComputable) {
+
+        progressBar.max = evt.total;
+
+        progressBar.value = evt.loaded;
+
+        percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + "%";
+
     }
 
-    function readFile() {
-        var file = this.files[0];
-        if (!/image\/\w+/.test(file.type)) {
-            alert("文件必须为图片！");
-            return false;
-        }
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function (e) {
-            result.attr("src", this.result);
-        }
-    }
+}  
 
-    var result = document.getElementById("result");
-    var input = document.getElementById("file_input");
 
-    if (typeof FileReader === 'undefined') {
-        result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
-        input.setAttribute('disabled', 'disabled');
-    } else {
-        input.addEventListener('change', readFile, false);
-    }
 
-    function readFile() {
-        var file = this.files[0];
-        if (!/image\/\w+/.test(file.type)) {
-            alert("文件必须为图片！");
-            return false;
-        }
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function (e) {
-            result.src = this.result;
-        }
-    }*/
+*/   

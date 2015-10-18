@@ -24,8 +24,9 @@ public class Users {
 	private String lastLoginDate;   //user last login date
 	private String question;      //密保问题
 	private String answer;        //密保答案
-	
+	//不是字段的属性
 	private String passwordConfirmation;  //密码确认
+	private String Genders;//性别
 	//Getters and Setters
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -115,6 +116,13 @@ public class Users {
 	}
 	public void setPasswordConfirmation(String passwordConfirmation) {
 		this.passwordConfirmation = passwordConfirmation;
+	}
+	@Transient
+	public String getGenders() {
+		return Genders;
+	}
+	public void setGenders(String genders) {
+		Genders = genders;
 	}
 	//空构造方法
 	public Users(){

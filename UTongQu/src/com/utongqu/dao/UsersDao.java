@@ -14,5 +14,9 @@ public interface UsersDao {
 	public int findUserName(String username);
 	//修改基本资料
 	public int updateUserBasicInfo(int gender,String birthday,String address,String job,String username);
+	//查找用户by用户名
+	public List<Users> findUsersByUsername(String username);
+	//修改头像
+	public int updateUserFace(String face,String username);
 	
 }
