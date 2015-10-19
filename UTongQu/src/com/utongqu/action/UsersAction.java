@@ -1,5 +1,6 @@
 package com.utongqu.action;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -49,7 +50,7 @@ public class UsersAction extends SuperAction  {
 		}
 		return "loginout_success";
 	}
-	
+	//时间日期格式化
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd : HH:mm:ss");
 	//SimpleDateFormat bir=new SimpleDateFormat("yyyy-MM-dd");
 	Date date=new Date();
@@ -77,6 +78,7 @@ public class UsersAction extends SuperAction  {
 	}
 	
 	public String namereg="^[0-9a-zA-Z]{4,16}$";
+	public String pwdreg="^[\\@A-Za-z0-9\\!\\#\\$\\%\\^\\&\\*\\.\\~]{6,22}$";
 	//判断用户是否存在
 	public String findUserName() throws Exception {	       
 		String username = request.getParameter("username");
@@ -143,6 +145,52 @@ public class UsersAction extends SuperAction  {
 		response.getWriter().print(responseStr);
 		return null;
 	}
+	
+	//修改用户密码
+	public String updateUserPassword() throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		String username=request.getParameter("username");
+		String pwd_old=request.getParameter("pwd-old");
+		String pwd_new=request.getParameter("pwd-new");
+		String pwd_newOK=request.getParameter("pwd-newOK");
+		System.out.println(username);
+		System.out.println(pwd_old);
+		System.out.println(pwd_new);
+		System.out.println(pwd_newOK);
+		String responseStr = "";
+		try{
+			if(!pwd_new.matches(pwdreg)&&!pwd_newOK.matches(pwdreg)&&!pwd_old.matches(pwdreg)){
+				responseStr ="{\"msg\":\"密码格式不对哟\"}";
+			}else{
+				if(!pwd_newOK.equals(pwd_new)){
+					responseStr ="{\"msg\":\"两次密码不一致哟\"}";
+				}else{
+					UsersDao udao=new UsersDaoImpl();
+					int iRet=udao.findUserPassword(pwd_old, username);
+					if (iRet>0) {
+						int iRet2=udao.updateUserPassword(pwd_newOK, username);
+						if(iRet2>0){
+							List<Users> userinfo=udao.findUsersByUsername(username);
+							session.setAttribute("userinfo", userinfo);
+							responseStr ="{\"msg\":\"改密成功了哟\"}";
+						}else{
+							responseStr ="{\"msg\":\"改密成功了哟\"}";
+						}
+						
+					} else{
+						responseStr ="{\"msg\":\"原密码不对哟\"}";
+					}
+				}
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		response.getWriter().print(responseStr);
+		return null;
+	}
+	
+	
+	
 	
 
 }

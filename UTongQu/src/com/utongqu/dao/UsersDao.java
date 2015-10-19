@@ -18,5 +18,9 @@ public interface UsersDao {
 	public List<Users> findUsersByUsername(String username);
 	//修改头像
 	public int updateUserFace(String face,String username);
+	//修改密码
+	public int updateUserPassword(String password,String username);
+	//修改密码前先核对密码
+	public int findUserPassword(String password,String username);
 	
 }

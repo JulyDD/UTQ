@@ -157,6 +157,53 @@ public class UsersDaoImpl implements UsersDao {
 		}
 	}
 
+	@Override
+	public int updateUserPassword(String password, String username) {
+		Transaction transaction=null;
+		try {
+			System.out.println(username);
+			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
+			String hql =  "update Users u set u.password=? where u.username=?";
+			transaction = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			query.setParameter(0, password);
+			query.setParameter(1, username);
+			int iRet=query.executeUpdate();
+			transaction.commit();
+			return iRet;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally{
+			if (transaction != null) {
+				transaction = null;
+			}
+		}
+	}
+
+	@Override
+	public int findUserPassword(String password, String username) {
+		Transaction transaction=null;
+		try {
+			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
+			String hql =  "select count(password) from Users where username =? and password=?";
+			transaction = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			query.setParameter(0, username);
+			query.setParameter(1, password);
+			int size=(int)(long)query.uniqueResult();
+			transaction.commit();
+			return size;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally{
+			if (transaction != null) {
+				transaction = null;
+			}
+		}
+	}
+
 	
 	
 	

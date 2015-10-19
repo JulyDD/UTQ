@@ -114,10 +114,11 @@ $(function(){
                        <li>
                          <form action="#" method="post" name="pwdform">
                            <table>
-                             <tr><td class="name">原密码：</td><td><input type="password" name="pwd-old" placeholder="原密码" class="clear-input"  /></td><td></td></tr>
-                             <tr><td class="name">新密码：</td><td><input type="password" name="pwd-new" placeholder="新密码" class="clear-input" /></td><td></td></tr>
-                             <tr><td class="name">确认密码：</td><td><input type="password" name="pwd-newOK" placeholder="确认密码" class="clear-input" /></td><td></td></tr>
-                             <tr><td></td><td colspan="2"><a href="#" onclick="" class="submit-btn">保存</a></td></tr>
+                             <tr><td><input type="hidden"  name="username" value="<s:property value="#session.userinfo.get(0).username"/>" class="update-name" /></td></tr>
+                             <tr><td class="name">原密码：</td><td><input type="password" name="pwd-old" placeholder="原密码" class="clear-input pwd-old"  /></td><td></td></tr>
+                             <tr><td class="name">新密码：</td><td><input type="password" name="pwd-new" placeholder="新密码" class="clear-input pwd-new" /></td><td></td></tr>
+                             <tr><td class="name">确认密码：</td><td><input type="password" name="pwd-newOK" placeholder="确认密码" class="clear-input pwd-newOK" /></td><td></td></tr>
+                             <tr><td></td><td colspan="2"><a href="javascript:void(0);" id="update-pwd" class="submit-btn ">保存</a></td></tr>
                            </table>
                          </form>
                        </li>
