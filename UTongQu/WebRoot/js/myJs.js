@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-
+	
 //	isLegalFiletype();
 //	contactAjaxFileUpload();
 });
@@ -28,7 +28,7 @@ function contactAjaxFileUpload() {
 	//
 	if (isLegalFiletype($("#upload").val())) {
 		$.ajaxFileUpload({
-			url:"fileUpload.action?username="+username+"", 
+			url:"upload/FileUpload_updateFace.action?username="+username+"", 
 			secureuri : false,// 一般设置为false
 			fileElementId : 'upload', // 文件上传控件的id属性 <input
 			dataType : 'json',
@@ -50,3 +50,5 @@ function contactAjaxFileUpload() {
 		});
 	}
 }
+
+

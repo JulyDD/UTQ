@@ -30,7 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/zhan2.js"></script><!--点赞效果-->
 <script type="text/javascript" src="js/jquery.imgbox.pack.js"></script><!--图片放大效果-->
 <script type="text/javascript" src="js/laydate.js"></script><!--日期插件效果-->
-<script type="text/javascript" src="js/file.js"></script><!--上传预览效果-->
 <script type="text/javascript" src="js/update.js"></script><!--update-->
 <script type="text/javascript" src="js/ajaxfileupload.js"></script><!--ajaxUpload-->
 <script type="text/javascript" src="js/myJs.js"></script><!--upload-->

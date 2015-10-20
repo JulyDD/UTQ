@@ -53,7 +53,7 @@ public class FileUploadAction extends SuperAction {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String execute() throws Exception{
+	public String updateFace() throws Exception{
 		response.setContentType("text/html;charset=UTF-8");
 		String responseStr = "";
 		System.out.println(this.getUsername());
@@ -72,7 +72,6 @@ public class FileUploadAction extends SuperAction {
 			//读取uploadFile文件输出到toFile文件中
 			while((length=is.read(buffer))>0){    
 				os.write(buffer, 0, length);
-				
 			}
 			is.close();//关闭输入流
 			os.close();//关闭输出流
@@ -95,5 +94,41 @@ public class FileUploadAction extends SuperAction {
 		response.getWriter().print(responseStr);
 		return null;
 	}
+	
+	//添加内容图片
+	public String addContentImage() throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		//String responseStr = "";
+		System.out.println(this.getUploadFileName());
+       /* String uid=request.getParameter("uid");
+        String content=request.getParameter("content");
+        System.out.println(uid);
+        System.out.println(content);*/
+		try{
+			if(!new File(savePath).isDirectory())
+				new File(savePath).mkdirs();
+			InputStream is=new FileInputStream(upload);//文件输入流
+			String uploadPath=ServletActionContext.getServletContext().getRealPath(savePath);//设置文件上传目录
+			System.out.println(uploadPath);
+			File toFile=new File(uploadPath,this.getUploadFileName());//设置目标文件
+			OutputStream os=new FileOutputStream(toFile);//创建一个输出流
+			byte[] buffer=new byte[1024];//设置缓存
+			int length=0;
+			//读取uploadFile文件输出到toFile文件中
+			while((length=is.read(buffer))>0){    
+				os.write(buffer, 0, length);
+			}
+			is.close();//关闭输入流
+			os.close();//关闭输出流
+
+
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	
 	
 }

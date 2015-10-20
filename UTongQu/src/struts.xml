@@ -32,9 +32,16 @@
          <result name="backtoolsPage">/userspages/Users_tools.jsp</result><!-- 返回账户设置页面 -->
        </action>
     </package>
-    <!-- 文件上传 -->
-    <package name="upload"  extends="struts-default" namespace="/" >
-       <action name="fileUpload" class="com.utongqu.action.FileUploadAction" >
+    
+    <package name="contents" namespace="/contents" extends="struts-default">
+       <action name="*_*" class="com.utongqu.action.{1}Action" method="{2}">
+         <result name="success">/userspages/Users_login.jsp</result><!-- 写成功 -->
+       </action>
+    </package>
+    
+    <!-- 文件上传相关action -->
+    <package name="upload"  extends="struts-default" namespace="/upload" >
+       <action name="*_*" class="com.utongqu.action.{1}Action" method="{2}" >
          <param name="savePath">/images</param><!-- 配置文件上传目录 -->
          <!-- 配置文件上传拦截器 -->
          <interceptor-ref name="fileUpload">
@@ -45,7 +52,9 @@
          </interceptor-ref>
          <interceptor-ref name="defaultStack"></interceptor-ref>
          <result name="success">/userspages/Users_tools.jsp</result>
+         <result name="addContent">/userspages/Users_publish.jsp</result>
        </action>
     </package>
+    
 
 </struts>

@@ -87,18 +87,21 @@
 
 
 #dropbox .preview{
-	width:245px;
-	height: 215px;
+	width:460px;
+	height: auto;
+	max-height:660px;
 	float:left;
 	/* margin: 55px 0 0 60px; */
-	margin:60px auto 60px 220px;;
+	margin:0 auto ;
 	position: relative;
+	top:-100px;
 	text-align: center;
 }
 
 #dropbox .preview img{
-	max-width: 240px;
-	max-height:180px;
+	max-width: 460px;
+	max-height:660px;
+	margin:0 110px;
 	border:3px solid #fff;
 	display: block;
 	
@@ -118,7 +121,7 @@
 	left:0;
 	height:100%;
 	width:100%;
-	background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5);
+	/* background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5); */
 	display: none;
 }
 
@@ -171,6 +174,10 @@
                                 font-size:14px; padding:2px;}
 .dropbox-text input[type=submit]{ width:120px; line-height:40px; background:#D0EEFF; color: #1E88C7; border-radius: 4px; }
 .dropbox-text input[type=submit]:hover{   background: #AADFFD; border-color: #78C3F3; color: #004974; text-decoration: none;}
+
+.dropbox-text input[type=button]{ width:120px; line-height:40px; background:#D0EEFF; color: #1E88C7; border-radius: 4px; }
+.dropbox-text input[type=button]:hover{   background: #AADFFD; border-color: #78C3F3; color: #004974; text-decoration: none;}
+
 
 /*----------------------------
 	The Footer

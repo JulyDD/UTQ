@@ -28,6 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/code.js"></script>
 <script type="text/javascript" src="js/zhan2.js"></script>
 <script type="text/javascript" src="js/jquery.imgbox.pack.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script><!--ajaxUpload-->
+<script type="text/javascript" src="js/myJs.js"></script><!--upload-->
+<script type="text/javascript" src="js/file.js"></script>
 <script type="text/javascript">  
 $(function(){
     imgs();	/*调用图片弹窗的方法*/
@@ -44,10 +47,7 @@ $(function(){
 	   }
 	};
 	
-	
-	
-	
-	
+	tm_upload();
 })
 </script>
 </head>
@@ -64,36 +64,40 @@ $(function(){
       <div class="pagemain">
            <div class="image-info">
               <div class="image-piece">
-                   <form method="post" action="#" name="publishform">
-                      <div id="dropbox">
+                   <form method="post" action="upload/FileUpload_addContent.action" name="publishform" enctype="multipart/form-data">
+                      <!-- <div id="dropbox">
 			            <span class="message">请把图片拖到这里 <br /><i>(一张你想分享的童年回忆)</i></span>
-		              </div>
-		              <div class="dropbox-text">
-		                 <input type="text" placeholder="说说你的乐趣" />
-		                 <input type="submit" value="飞翔吧！童趣"/>
+		              </div> -->
+						<div class="drag-area" id="dropbox">
+							<span class="message">请把图片拖到这里 <br /><i>(一张你想分享的童年回忆)</i></span>
+						</div>
+						<div class="dropbox-text">
+		                 <input type="hidden" id="uid" value="<s:property value="#session.userinfo.get(0).uid"/>">
+		                 <input type="text" id="content"  placeholder="说说你的乐趣" />
+		                 <input type="button" id="publish"  value="飞翔吧！童趣"/>
 		              </div>
                    </form>
               </div>
               <div class="board-info">
                    <%@include file="console/user_info.jsp" %>  
-              </div>    
+              </div>
+                   
            </div>
           <div style="clear:both;"></div>
  
          <%@include file="console/msg.jsp" %>           
       </div>
-      
-     
-      
-      
+      <div class="content-loading" style="max-width:150px;line-height:50px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000; position:relative; z-index:999; bottom:100px;margin:0 auto ;color:#fff;display:none">
+         <span id="content-msg"></span>
+      </div> 
   </div>
   <%@include file="console/toTop.jsp" %>
 <script type="text/javascript" src="js/loginform.js"></script>
 <!--百度分享代码-->
 <script type="text/javascript" src="js/baiduShare.js"></script>
 <!-- Including the HTML5 Uploader plugin -->
-<script type="text/javascript" src="js/jquery.filedrop.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.filedrop.js"></script> -->
 <!-- The main script file -->
-<script type="text/javascript" src="js/fileimg.js"></script>
+<!-- <script type="text/javascript" src="js/fileimg.js"></script> -->
 </body>
 </html>

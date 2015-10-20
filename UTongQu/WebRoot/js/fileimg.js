@@ -95,8 +95,9 @@ $(function(){
 			
 			// e.target.result holds the DataURL which
 			// can be used as a source of the image:
-			
+
 			image.attr('src',e.target.result);
+			
 		};
 		
 		// Reading the file as a DataURL. When finished,
@@ -108,7 +109,10 @@ $(function(){
 		
 		// Associating a preview container
 		// with the file, using jQuery's $.data():
-		
+		//6、通过HTML5 FormData动态设置表单元素
+		var formData=new FormData();//动态给表单赋值，传递二进制文件
+		//其实就相当于<input type="file" name="file"/>
+		formData.append("upload",file);
 		$.data(file,preview);
 	}
 

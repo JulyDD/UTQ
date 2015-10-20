@@ -1,109 +1,104 @@
-// JavaScript Document
+//1、文件上传HTML5 通过drag把文件拖拽到浏览器的默认事件覆盖
+//文件离开
+document.ondragleave=function(e){
+e.preventDefault();
+	console.info("文件离开执行了我！！");
+};
+//鼠标松开文件
+document.ondrop=function(e){
+e.preventDefault();
+	console.info("松开以后执行了我！");
+};
+//鼠标移动文件
+document.ondragover=function(e){
+e.preventDefault();
+	console.info("文件移动以后执行了我！");
+};
 
-var lastfile="images/head-one.jpg";
-function previewFile() {
-	alert('test action');
- /* var preview = document.querySelector('#image');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
+var fileList;
+var formData;
+var fileName;
+function tm_upload(){
+	var uploadArea=document.getElementById("dropbox");
+	//2、通过HTML5拖拽事件，ondrop，然后通过拖动区域监听浏览器的drop事件达到文件上传的目的
+	uploadArea.addEventListener("drop", function(e){
+		e.preventDefault();
+		//3、从事件event中获取拖拽到浏览器的文件信息
+	    fileList=e.dataTransfer.files;
+		for(var i=0;i<fileList.length;i++){
+			//此处判断只能上传图片
+			if(fileList[i].type.indexOf("image")!=0){
+				alert("请上传图片");
+				return;				
+			}
+			//图片预览  这一步需要判断是什么浏览器  大家自己判断吧
+			/*************************************/
+			var img1=window.URL.createObjectURL(fileList[i]);
+			/*************************************/
+			/* var str="<div><img src='"+img1+"'/><p>"+fileList[i].name+"</p></div>";
+			document.getElementById("preview").innerHTML +=str; */
+			
+			var str="<div class='preview'>"+
+			        "<span class='imageHolder'>"+
+			        "<img class='tqimg' src='"+img1+"' />"+
+			        "<span class='uploaded'></span>"+
+		            "</span>"+
+		            /*"<div class='progressHolder'>"+
+			        "<div class='progress'></div>"+
+		            "</div>"+*/
+	                "</div>";
+			
+	        $("#dropbox").append(str);
+	        
+		    fileName=fileList[i].name;
+			console.info(fileName);
+			var fileSize=fileList[i].size;
+			console.info(fileSize);
+			/*alert( fileName);*/
+			
+			//4、通过XMLHttpRequest上传文件到服务器  就是一个ajax请求
+			var xhr=new XMLHttpRequest();
+			//5、这里需要先写好一个data.jsp的上传文件，当然，你写成servlet或者是action都可以
+			xhr.open("post","upload/FileUpload_addContentImage.action?uid="+uid+"&content="+content,true);
+			xhr.setRequestHeader("X-Request-Width", "XMLHttpRequest");
+			//6、通过HTML5 FormData动态设置表单元素
+			var formData=new FormData();//动态给表单赋值，传递二进制文件
+			//其实就相当于<input type="file" name="file"/>
+			formData.append("upload",fileList[i]);
+			xhr.send(formData);
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = lastfile;
-  }*/
-  
-	var username=$(".update-name").val();
-	var file=document.querySelector('input[type=file]').files[0];
-	alert(file);
-  $.ajax({  
-	  type:"POST",
-      url:"fileUpload.action", 
-      fileElementId : "upload",
-      data:"username="+username+"&upload="+file,
-      dataType: "json",
-      cache : false,  
-      async : false, 
-      success:function(msg){  
-      	console.log(msg.msg);
-          document.getElementById("update-msg").innerHTML=msg.msg;  
-          //继续写jq的定时器实现修改提示
-          
-          $(".update-loading").toggle(2000,function(){
-              $(".update-loading").toggle(1500);
-          });
-      },  
-      error:function(data){  
-      	console.log(data);
-          }  
-      }); 
-  
-  
+			
+         }
+	});
 }
+$(function(){
 
+	$("#publish").click(function addContent(){
+		var uid=$("#uid").val();  
+		var content=$("#content").val();
+		console.log("uid="+uid+",content="+content+",image="+fileName);
+		$.ajax({  
+			type:"post",
+	        url:'contents/Contents_addContent.action',  
+	        data: "uid="+uid+"&contents="+content+"&image="+fileName,//传参  
+	        dataType: "json",
+	        asyhc:false,
+	        success:function(msg){  
+	        	function jumurl(){
+	        		window.location.href = 'users/Users_enterTheWritingPage.action';
+	        		}
+	        		setTimeout(jumurl,3000);
+	        	
+	        	document.getElementById("content-msg").innerHTML=msg.msg;  
+		        $(".content-loading").toggle(2000,function(){
+		        $(".content-loading").toggle(1500);
+		        });
+	        },  
+	        error:function(data){  
+	        	console.log("data:"+data);
+	            }  
+	        }); 
+	})
 
-
-/*function UpladFile() {
-
-    var fileObj = document.getElementByIdx_x_x("file").files[0]; // js 获取文件对象
-
-    var FileController = "../file/save";                    // 接收上传文件的后台地址 
-
-
-
-    // FormData 对象
-
-    var form = new FormData();
-
-    form.append("author", "hooyes");                        // 可以增加表单数据
-
-    form.append("file", fileObj);                           // 文件对象
-
-
-
-    // XMLHttpRequest 对象
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.open("post", FileController, true);
-
-    xhr.onload = function () {
-
-       // alert("上传完成!");
-
-    };
-
-    xhr.upload.addEventListener("progress", progressFunction, false);
-
-    
-
-    xhr.send(form);
-
-
-
-}
-
-function progressFunction(evt) {
-
-    var progressBar = document.getElementByIdx_x_x("progressBar");
-
-    var percentageDiv = document.getElementByIdx_x_x("percentage");
-
-    if (evt.lengthComputable) {
-
-        progressBar.max = evt.total;
-
-        progressBar.value = evt.loaded;
-
-        percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + "%";
-
-    }
-
-}  
-
-
-
-*/   
+	
+})
