@@ -204,6 +204,29 @@ public class UsersDaoImpl implements UsersDao {
 		}
 	}
 
+	@Override
+	public String findFaceByUserName(String username) {
+		Transaction transaction=null;
+		System.out.println("userdao:"+username);
+		try {
+			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
+			String hql =  "select face from Users where username =?";
+			transaction = session.beginTransaction();
+			Query query = session.createQuery(hql);
+			query.setParameter(0, username);
+			String face=query.list().get(0).toString();
+			transaction.commit();
+			return face;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally{
+			if (transaction != null) {
+				transaction = null;
+			}
+		}
+	}
+
 	
 	
 	

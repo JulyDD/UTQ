@@ -22,5 +22,6 @@ public interface UsersDao {
 	public int updateUserPassword(String password,String username);
 	//修改密码前先核对密码
 	public int findUserPassword(String password,String username);
-	
+	//根据用户名查头像
+	public String findFaceByUserName(String username);
 }

@@ -2,9 +2,14 @@ package com.utongqu.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import net.sf.json.JSONArray;
 
 import com.utongqu.dao.ContentsDao;
+import com.utongqu.dao.UsersDao;
 import com.utongqu.dao.impl.ContentsDaoImpl;
+import com.utongqu.dao.impl.UsersDaoImpl;
 import com.utongqu.entity.Contents;
 import com.utongqu.entity.Users;
 
@@ -19,14 +24,14 @@ public class ContentsAction extends SuperAction {
 	public void setContent(Contents content) {
 		this.content = content;
 	}
-
+    //写内容
 	public String addContent() throws Exception{
 		response.setContentType("text/html;charset=UTF-8");
 		String responseStr = "";
-		int uid=Integer.parseInt(request.getParameter("uid"));
+		String contentUser=request.getParameter("contentUser");
 		String image=request.getParameter("image");
 		String content=request.getParameter("contents");
-		System.out.println(uid);
+		System.out.println(contentUser);
 		System.out.println(image);
 		System.out.println(content);
 		try{
@@ -39,7 +44,7 @@ public class ContentsAction extends SuperAction {
 				//时间日期格式化
 				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd : HH:mm:ss");
 				Contents c=new Contents();
-				c.setContentUID(uid);
+				c.setContentUser(contentUser);
 				c.setImage(image);
 				c.setContent(content);
 				c.setContentDate(sdf.format(date));
@@ -56,6 +61,38 @@ public class ContentsAction extends SuperAction {
 			ex.printStackTrace();
 		}
 		
+		response.getWriter().print(responseStr);
+		return null;
+	}
+	
+	
+	String data="{\"data\":[{\"img\":\"0\",\"content\":\"1\",\"title\":\"2\",\"headpic\":\"3\",\"person\":\"4\",\"time\":\"5\",\"like\":\"6\",\"dislike\":\"7\",\"comment\":\"8\"}]}";
+	
+	//获取内容
+	public String findAllContents() throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		String responseStr = "";
+		try{
+			ContentsDao cdao=new ContentsDaoImpl();
+			List<Contents> contentList=cdao.findContents();
+			for(int i=0;i<contentList.size();i++){
+				UsersDao udao=new UsersDaoImpl();
+				String face=udao.findFaceByUserName(contentList.get(i).getContentUser());
+				System.out.println(face);
+		        contentList.get(i).setContentUserFace(face);
+		        contentList.get(i).setDislike(0);
+		        contentList.get(i).setLike(0);
+		        contentList.get(i).setComment(0);
+			}
+			
+			
+			JSONArray jsonArray = JSONArray.fromObject(contentList);
+			String jsonData=jsonArray.toString();
+			responseStr="{\"data\":"+jsonData+"}";
+			System.out.println(responseStr);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		response.getWriter().print(responseStr);
 		return null;
 	}

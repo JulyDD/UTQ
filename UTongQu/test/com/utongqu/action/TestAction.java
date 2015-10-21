@@ -2,19 +2,29 @@ package com.utongqu.action;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.json.JSONArray;
+
 import org.junit.Test;
 
 public class TestAction {
 
-	public String namereg="^[0-9a-zA-Z]{4,16}$";
+	
 	@Test
 	public void test() {
-		if("123".matches(namereg)){
-			System.out.println("{'msg':'test-OK'}");
-		}else{
-			System.out.println("{'msg':'用户名须为4—16位的英文字母或数字'}");
-		}
-		/*System.out.println("1234".matches(namereg));*/
+		
+		String k="[\"1\",\"2\",\"3\"]";
+		List<String> list=new ArrayList<String>();
+		list.add(k);
+		list.add("2");
+		list.add("3");
+		JSONArray jsonArray=JSONArray.fromObject(list);
+		String jsonstr=jsonArray.toString();
+		System.out.println(jsonstr);
+		
+		
 	}
 
 }

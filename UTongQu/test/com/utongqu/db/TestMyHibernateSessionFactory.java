@@ -16,6 +16,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
 
 import com.utongqu.entity.Users;
+import com.utongqu.util.MD5;
 
 
 public class TestMyHibernateSessionFactory {
@@ -50,14 +51,14 @@ public class TestMyHibernateSessionFactory {
 		Users u1=new Users();
 		u1.setUid(1);
 		u1.setUsername("test");
-		u1.setPassword("111111");
+		u1.setPassword(MD5.getPassMD5("111111"));
 		u1.setJoinDate(sdf.format(date));
 		u1.setBirthday(bir.format(date));
 		u1.setGender(-1);
 		u1.setFace("2.jpg");	
 		
-		Users u2=new Users(2, "zhangsan", "111111", "111.jpg", 0, bir.format(date), "不知道", "不知道", "123@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
-		Users u3=new Users(3, "july", "111111", "1.jpg", 0, bir.format(date), "不知道", "不知道", "231@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
+		Users u2=new Users(2, "zhangsan", MD5.getPassMD5("111111"), "111.jpg", 0, bir.format(date), "不知道", "不知道", "123@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
+		Users u3=new Users(3, "july",MD5.getPassMD5("111111") , "1.jpg", 0, bir.format(date), "不知道", "不知道", "231@qq.com", sdf.format(date), sdf.format(date), "你是谁", "我是我");
 		
 		session.save(u1);
 		session.save(u2);

@@ -43,7 +43,7 @@ $(function(){
 	
 window.onload=function(){
     document.documentElement.scrollTop=0;   //加载时重置滚动高度
-    waterFall("imgmain","imgboxs",{method:"waterFall.php",maxColumns:5,minColumns:3,dropDegree:"center",loadingId:"waterfall_loading",ajaxPOST:{title:"test"}},function(data,parent){
+    waterFall("imgmain","imgboxs",{method:"contents/Contents_findAllContents.action",maxColumns:5,minColumns:3,dropDegree:"center",loadingId:"waterfall_loading",ajaxPOST:{title:"test"}},function(data,parent){
            
 	  //图片块的HTML模板
       var moban='<div class="pic images"><a class="example" href="{{image}}"><img src={{image}} /></a><div class="content">'+
@@ -55,13 +55,13 @@ window.onload=function(){
       for(var i=0;i<data.data.length;i++){
           var odiv=document.createElement("div");
           odiv.className="imgboxs";
-          var newdiv=moban.replace(/{{image}}/,"images/"+data.data[i].img)
-				                .replace(/{{image}}/,"images/"+data.data[i].img)
+          var newdiv=moban.replace(/{{image}}/,"images/"+data.data[i].image)
+				                .replace(/{{image}}/,"images/"+data.data[i].image)
 								.replace(/{{content}}/,+data.data[i].content)
 								.replace(/{{title}}/,data.data[i].title)
-								.replace(/{{headpic}}/,"images/"+data.data[i].headpic)
-								.replace(/{{person}}/,data.data[i].person)
-								.replace(/{{time}}/,data.data[i].time)
+								.replace(/{{headpic}}/,"images/"+data.data[i].contentUserFace)
+								.replace(/{{person}}/,data.data[i].contentUser)
+								.replace(/{{time}}/,data.data[i].contentDate)
 								.replace(/{{like}}/,data.data[i].like)
 								.replace(/{{dislike}}/,data.data[i].dislike)
 								.replace(/{{comment}}/,data.data[i].comment);

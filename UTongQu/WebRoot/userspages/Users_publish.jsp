@@ -72,7 +72,7 @@ $(function(){
 							<span class="message">请把图片拖到这里 <br /><i>(一张你想分享的童年回忆)</i></span>
 						</div>
 						<div class="dropbox-text">
-		                 <input type="hidden" id="uid" value="<s:property value="#session.userinfo.get(0).uid"/>">
+		                 <input type="hidden" id="contentUser" value="<s:property value="#session.userinfo.get(0).username"/>">
 		                 <input type="text" id="content"  placeholder="说说你的乐趣" />
 		                 <input type="button" id="publish"  value="飞翔吧！童趣"/>
 		              </div>

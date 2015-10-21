@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 import com.utongqu.dao.UsersDao;
 import com.utongqu.dao.impl.UsersDaoImpl;
 import com.utongqu.entity.Users;
+import com.utongqu.util.MD5;
 
 
 public class UsersAction extends SuperAction  {
@@ -27,7 +28,7 @@ public class UsersAction extends SuperAction  {
 	public String login(){
 		UsersDao udao=new UsersDaoImpl();
 		//System.out.println("Action:"+users.getUsername());
-		List<Users> userinfo=udao.login(users.getUsername() , users.getPassword() );
+		List<Users> userinfo=udao.login(users.getUsername() , MD5.getPassMD5(users.getPassword()) );
 		System.out.println(userinfo);
 		if(userinfo.size()>0){
 			session.setAttribute("userinfo", userinfo);
@@ -63,9 +64,12 @@ public class UsersAction extends SuperAction  {
 		System.out.println(size);
 		if(1>size){
 			if(users.getPassword().equals(users.getPasswordConfirmation())){
+				//将密码加密
+				users.setPassword(MD5.getPassMD5(users.getPasswordConfirmation()));
 				users.setJoinDate(sdf.format(date));
 				users.setLastLoginDate(sdf.format(date));
 				users.setFace("head-one.jpg");
+				users.setGender(-1);
 				boolean bRet=udao.register(users);
 				if(bRet){
 					List<Users> usersinfo=new ArrayList<Users>();
@@ -166,9 +170,9 @@ public class UsersAction extends SuperAction  {
 					responseStr ="{\"msg\":\"两次密码不一致哟\"}";
 				}else{
 					UsersDao udao=new UsersDaoImpl();
-					int iRet=udao.findUserPassword(pwd_old, username);
+					int iRet=udao.findUserPassword(MD5.getPassMD5(pwd_old), username);
 					if (iRet>0) {
-						int iRet2=udao.updateUserPassword(pwd_newOK, username);
+						int iRet2=udao.updateUserPassword(MD5.getPassMD5(pwd_new), username);
 						if(iRet2>0){
 							List<Users> userinfo=udao.findUsersByUsername(username);
 							session.setAttribute("userinfo", userinfo);

@@ -23,8 +23,7 @@ $(function(){
 	        cache : false,  
 	        async : false, 
 	        success:function(msg){  
-	        	/*$('.basic-info').submit();*/
-	        	console.log(msg.msg);
+	        	
 	            document.getElementById("update-msg").innerHTML=msg.msg;  
 	            //继续写jq的定时器实现修改提示
 	            
@@ -43,7 +42,7 @@ $(function(){
 		var pwd_old=$(".pwd-old").val();
 		var pwd_new=$(".pwd-new").val();
 		var pwd_newOK=$(".pwd-newOK").val();
-		alert("old:"+pwd_old+"new:"+pwd_new+"newOK:"+pwd_newOK);
+		
 		if(!pwdreg.test(pwd_old)){
 			document.getElementById("update-msg").innerHTML="原密码格式不对哟";  
             //继续写jq的定时器实现修改提示
@@ -80,8 +79,7 @@ $(function(){
 		        cache : false,  
 		        async : false, 
 		        success:function(msg){  
-		        	/*$('.basic-info').submit();*/
-		        	console.log(msg.msg);
+		        	
 		            document.getElementById("update-msg").innerHTML=msg.msg;  
 		            //继续写jq的定时器实现修改提示
 		            

@@ -11,10 +11,11 @@ import javax.persistence.Id;
 public class Comments {
 
 	private int commentID;             //评论id
-	private int ContentID;             //所属内容id
-	private int commentUID;            //评论人id
+	private int contentID;             //所属内容id
+	//private int commentUID;            //评论人id
+	private String commentUser;        //评论人 
 	private String comment;            //评论内容 
-	private String commentDate;          //评论时间
+	private String commentDate;        //评论时间
 	private boolean like;              //是否喜欢
 	private boolean dislike;           //是否不喜欢
 
@@ -28,16 +29,16 @@ public class Comments {
 		this.commentID = commentID;
 	}
 	public int getContentID() {
-		return ContentID;
+		return contentID;
 	}
 	public void setContentID(int contentID) {
-		ContentID = contentID;
+		contentID = contentID;
 	}
-	public int getCommentUID() {
-		return commentUID;
+	public String getCommentUser() {
+		return commentUser;
 	}
-	public void setCommentUID(int commentUID) {
-		this.commentUID = commentUID;
+	public void setCommentUser(String commentUser) {
+		this.commentUser = commentUser;
 	}
 	public String getComment() {
 		return comment;
@@ -69,12 +70,12 @@ public class Comments {
 		
 	}
 	//带全属性构造方法
-	public Comments(int commentID, int contentID, int commentUID,
+	public Comments(int commentID, int contentID, String commentUser,
 			String comment, String commentDate, boolean like, boolean dislike) {
 		super();
 		this.commentID = commentID;
-		ContentID = contentID;
-		this.commentUID = commentUID;
+		this.contentID = contentID;
+		this.commentUser = commentUser;
 		this.comment = comment;
 		this.commentDate = commentDate;
 		this.like = like;
@@ -83,11 +84,14 @@ public class Comments {
 	//toString方法
 	@Override
 	public String toString() {
-		return "Comments [commentID=" + commentID + ", ContentID=" + ContentID
-				+ ", commentUID=" + commentUID + ", comment=" + comment
+		return "Comments [commentID=" + commentID + ", contentID=" + contentID
+				+ ", commentUser=" + commentUser + ", comment=" + comment
 				+ ", commentDate=" + commentDate + ", like=" + like
 				+ ", dislike=" + dislike + "]";
 	}
+	
+	
+	
 	
 	
 	

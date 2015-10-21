@@ -13,7 +13,7 @@
                                <s:if test="null==#session.userinfo">未登录</s:if>
                                <s:else><s:property value="#session.userinfo.get(0).username"/></s:else></span>
                              </p>
-                            <s:debug></s:debug>
+      
                          </div>
                        </div>
                       
