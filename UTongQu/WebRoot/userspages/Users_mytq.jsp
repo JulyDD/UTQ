@@ -17,7 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link type="text/css" rel="stylesheet" href="css/code.css">
 <link type="text/css" rel="stylesheet" href="css/index.css">
 <link type="text/css" rel="stylesheet" href="css/images.css"/>
-<link type="text/css" rel="stylesheet" href="css/reset.css"/>
 <style>
     /**
      * Grid items

@@ -95,14 +95,14 @@ public class UsersAction extends SuperAction  {
 			int size=udao.findUserName(username);
 			System.out.println(size);
 			if (0<size) {
-				responseStr ="{'msg':'该用户名已经被注册了哦','iRet':'-1'}";
+				responseStr ="{\"msg\":\"该用户名已经被注册了哦\",\"iRet\":-1}";
 			} else {
-				responseStr ="{'msg':'该用户名可以用哦','iRet':'1'}";
+				responseStr ="{\"msg\":\"该用户名可以用哦\",\"iRet\":1}";
 			}
 			response.getWriter().print(responseStr);
 			return null;
 		}else{
-			responseStr ="{'msg':'用户名须为4—16位的英文字母或数字','iRet':'0'}";
+			responseStr ="{\"msg\":\"用户名须为4—16位的英文字母或数字\",\"iRet\":0}";
 		}
 		response.getWriter().print(responseStr);
 		return null;

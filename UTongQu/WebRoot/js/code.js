@@ -38,31 +38,34 @@ $(function(){
   //判断注册用户名
   function findUserName(){
 		var username=$.trim($(".ui-registerDialog-input-username").val());
-		var bRet=false;
+		var bRet;
+		var iRet=0;
 			$.ajax({  
 				type:"POST",
 		        url:"users/Users_findUserName.action",  
 		        data: "username="+username,//传参  
 		        dataType: "json",
 		        cache : false,  
-		        async : false, 
 		        success:function(msg){  
+		        	console.log(msg.msg,msg.iRet);
 		            document.getElementById("Reg-uname").innerHTML=msg.msg;  
-		            //$(".register-uid").show(300);
-		            
-		            if(msg.iRet=="1"){
+		            $(".register-uid").show(300);
+		            console.log(msg.iRet);
+		            /*if(msg.iRet==1){
 		            	bRet=true;
 		            }else{
 		            	bRet=false;
-		            }
-		          
+		            }*/
+		            iRet=msg.iRet;
+		          console.log("iRet:"+iRet);
 		        },  
 		        error:function(data){  
 		        	bRet=false;
+		        	console.log(data);
 		            }  
 		        }); 
 			
-			 return bRet;
+			return iRet;
 
 		}
   
@@ -101,14 +104,15 @@ $(function(){
 
    //注册判断
 	function checkReg(){
-		if(!findUserName()){
-			 $("input[name=users.username]").focus();
+		
+		if(findUserName()){
+			 $(".ui-registerDialog-input-username").focus();
 			 return;
 		}else if(!checkRegPwd()){
-			$("input[name=users.password]").focus();
+			$(".ui-registerDialog-input-password").focus();
 			return;
 		}else if(!checkRegPwdOK()){
-			$("input[name=users.passwordConfirmation]").focus();
+			$(".ui-registerDialog-input-passwordOK").focus();
 			return;
 		}else{
 			$("#reg-form").submit();
