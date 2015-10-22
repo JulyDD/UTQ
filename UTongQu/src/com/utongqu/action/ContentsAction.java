@@ -88,7 +88,7 @@ public class ContentsAction extends SuperAction {
 			
 			JSONArray jsonArray = JSONArray.fromObject(contentList);
 			String jsonData=jsonArray.toString();
-			responseStr="{\"data\":"+jsonData+"}";
+			responseStr="{\"success\":true,\"message\":\"Retrieved pictures\",\"data\":"+jsonData+"}";
 			System.out.println(responseStr);
 		}catch(Exception ex){
 			ex.printStackTrace();

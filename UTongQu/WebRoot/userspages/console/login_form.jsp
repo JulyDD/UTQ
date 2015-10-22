@@ -56,15 +56,15 @@
         </div>
         
         <div style="top: 290px;" class="easytip-div register-uid">
-           <div class="easytip-text"><span id="Reg-uname"></span></div>
+           <div class="easytip-text"><span id="Reg-uname">用户名须为4—16位的英文字母或数字</span></div>
            <div style=" top:15px;" class="easytip-arrow"></div>
         </div>
         <div style="top: 350px;" class="easytip-div register-upwd">
-           <div class="easytip-text"><span id="Reg-pwd"></span></div>
+           <div class="easytip-text"><span id="Reg-pwd">密码必须为6—16位的字母、数字或字符</span></div>
            <div style="top: 15px;" class="easytip-arrow"></div>
         </div>
         <div style="top: 410px;" class="easytip-div register-upwdok">
-           <div class="easytip-text"><span id="Reg-pwd-ok"></span></div>
+           <div class="easytip-text"><span id="Reg-pwd-ok">两次密码须一致</span></div>
            <div style="top: 15px;" class="easytip-arrow"></div>
         </div>
         

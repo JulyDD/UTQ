@@ -81,15 +81,21 @@ $(function(){
               <div class="board-info">
                    <%@include file="console/user_info.jsp" %>  
               </div>
-                   
-           </div>
+                  <!-- loading按钮自己通过样式调整 -->
+				<div id="loading">
+					<div id="content-loading"
+						  style="max-width:150px;line-height:50px;font-size:16px;text-align:center;
+                          border-radius:3px;opacity:0.7;background:#000; position:relative;
+                          z-index:9999;margin:0 auto ;color:#fff;display:none;">
+						<span id="content-msg"></span>
+					</div>
+				</div>
+			</div>
           <div style="clear:both;"></div>
- 
+            
          <%@include file="console/msg.jsp" %>           
       </div>
-      <div class="content-loading" style="max-width:150px;line-height:50px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000; position:relative; z-index:999; bottom:100px;margin:0 auto ;color:#fff;display:none">
-         <span id="content-msg"></span>
-      </div> 
+      
   </div>
   <%@include file="console/toTop.jsp" %>
 <script type="text/javascript" src="js/loginform.js"></script>

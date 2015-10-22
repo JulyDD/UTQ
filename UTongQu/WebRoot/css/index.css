@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-#imgmain{ position:relative;  margin:0 auto;}
+/* #imgmain{ position:relative;  margin:0 auto;}
 
 .imgboxs { float:left; position:absolute; }
 
@@ -29,3 +29,155 @@
 .action span a{ color:#999;}
 .action span a:hover{ color:#666;}
 
+ */
+ 
+ #main {
+  margin: 30px 0;
+  position: relative;
+}
+ #tiles {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+ 
+ 
+}
+
+/**
+ * Grid items
+ */
+#tiles li {
+  width: 260px;
+  background-color: #ffffff;
+  border: 1px solid #dedede;
+          border-radius: 2px;
+     -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  display: none; /** Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+  padding: 4px;
+  
+}
+
+#tiles li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#tiles li img {
+  display: block;
+}
+
+.pic img{width:260px; height:auto; }
+
+/**
+ * Grid item text
+ */
+#tiles li p {
+  color: #666;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 200;
+  margin: 7px 0 2px 7px;
+}
+
+footer {
+  text-align: center;
+
+}
+
+footer a {
+  color: #435DC5;
+  text-decoration: none;
+}
+
+/**
+ * Progress bar for imagesLoaded
+ */
+.progress-bar {
+  background-color: #0BC20B;
+  height: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+  -webkit-transition: width 0.3s ease-out;
+     -moz-transition: width 0.3s ease-out;
+       -o-transition: width 0.3s ease-out;
+          transition: width 0.3s ease-out;
+}
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder {
+          border-radius: 2px;
+     -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  z-index: -1;
+}
+
+.example-tiles {
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  margin: 0;
+  padding: 0;
+}
+
+.example-tiles li {
+  display: block;
+  opacity: 1;
+  list-style-type: none;
+  float: left;
+  margin: 5px;
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+
+.example-tiles a,
+.example-tiles a:hover {
+  color: #555;
+  background-color: #eee;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+
+.example-tiles a:hover {
+  background-color: #ddd;
+}
+
+.content{ max-width:260px; margin:0 auto; border-bottom:1px dashed #ccc;  }
+.content span{ font:"宋体", Fixedsys, "华文琥珀", Fixedsys; font-size:14px; color:#666; line-height:26px;}
+.imgtitle { width:100%; height:26px; border-bottom:1px #cccccc solid;font-size:12px; line-height:26px;}
+.imgtitle span { color:#a0a0a0; text-indent:10px; display:block;}
+.imginfo { width:95%; height:70px; margin:1px auto 0; padding:0 5px; font-size:12px; border-bottom:1px #cccccc solid; background-color:#efefef;}
+.headpic { width:37px; padding:1px; border:1px #b5b5b5 solid; float:left; margin-top:14px; margin-left:20px;}
+.headpic>img{ width:36px; height:36px; padding:1px;}
+.imsg { width:150px; float:left; margin-left:8px; margin-top:17px;}
+.imsg p { color:#a0a0a0; font-size:12px; text-align:center;}
+.imsg .time { font-size:11px;} 
+.imsg p a{ display:block; width:24px; height:24px; float:right;}
+.imsg p a img{ width:24px !important; height:24px !important;}
+.action { width:100%; height:29px;  margin-top:1px; padding:0 50px; line-height:29px;}
+.action p { width:175px; height:29px;text-align:center; display:block;  }
+.action span { text-align:center;  float:left; color:#b5b5b5; margin:0px 2px;}
+.action span a{ color:#999; font-size:12px;}
+.action span a:hover{ color:#666;}
+ 

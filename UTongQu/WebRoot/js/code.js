@@ -48,7 +48,7 @@ $(function(){
 		        async : false, 
 		        success:function(msg){  
 		            document.getElementById("Reg-uname").innerHTML=msg.msg;  
-		            $(".register-uid").show(300);
+		            //$(".register-uid").show(300);
 		            
 		            if(msg.iRet=="1"){
 		            	bRet=true;

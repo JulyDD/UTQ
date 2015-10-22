@@ -102,8 +102,8 @@ $(function(){
 	        		setTimeout(jumurl,3000);
 	        	
 	        	document.getElementById("content-msg").innerHTML=msg.msg;  
-		        $(".content-loading").toggle(2000,function(){
-		        $(".content-loading").toggle(1500);
+		        $("#content-loading").toggle(2000,function(){
+		        $("#content-loading").toggle(1500);
 		        });
 	        },  
 	        error:function(data){  

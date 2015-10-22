@@ -73,3 +73,14 @@ $(window).scroll(function(){
   if(sTop==0) clearTimeout(scrolldelay);
  }
  
+//图片弹窗
+ function imgs() {
+ 		$(".example").imgbox({
+ 				'speedIn'		: 1,
+ 				'speedOut'		: 1,
+ 				'alignment'		: 'center',
+ 				'overlayShow'	: true,
+ 				'allowMultiple'	: true
+ 			});
+ 		};	
+ 
