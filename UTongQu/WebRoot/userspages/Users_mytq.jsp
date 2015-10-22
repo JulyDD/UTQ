@@ -179,11 +179,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         for (; i < length; i++) {
         	html =moban.replace(/{{image}}/,"images/"+response.data[i].image)
             .replace(/{{image}}/,"images/"+response.data[i].image)
-  			.replace(/{{content}}/,+response.data[i].content)
+  			.replace(/{{content}}/,response.data[i].content)
   			.replace(/{{title}}/,response.data[i].title)
   			.replace(/{{headpic}}/,"images/"+response.data[i].contentUserFace)
   			.replace(/{{person}}/,response.data[i].contentUser)
-  			.replace(/{{time}}/,response.data[i].contentDate)
+  			.replace(/{{time}}/,response.data[i].strDate)
   			.replace(/{{like}}/,response.data[i].like)
   			.replace(/{{dislike}}/,response.data[i].dislike)
   			.replace(/{{comment}}/,response.data[i].comment);

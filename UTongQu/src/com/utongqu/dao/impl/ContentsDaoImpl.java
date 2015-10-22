@@ -38,7 +38,7 @@ public class ContentsDaoImpl implements ContentsDao {
 		Transaction transaction=null;
 		try {
 			Session session = MyHibernateSessionFactory.getsSessionFactory().getCurrentSession();
-			String hql =  "from Contents";
+			String hql =  "from Contents order by contentDate desc";
 			transaction = session.beginTransaction();
 			Query query = session.createQuery(hql);
 			List<Contents> list= query.list();

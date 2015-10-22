@@ -15,7 +15,7 @@ public class Comments {
 	//private int commentUID;            //评论人id
 	private String commentUser;        //评论人 
 	private String comment;            //评论内容 
-	private String commentDate;        //评论时间
+	private Date commentDate;        //评论时间
 	private boolean like;              //是否喜欢
 	private boolean dislike;           //是否不喜欢
 
@@ -46,10 +46,10 @@ public class Comments {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getCommentDate() {
+	public Date getCommentDate() {
 		return commentDate;
 	}
-	public void setCommentDate(String commentDate) {
+	public void setCommentDate(Date commentDate) {
 		this.commentDate = commentDate;
 	}
 	public boolean isLike() {
@@ -71,7 +71,7 @@ public class Comments {
 	}
 	//带全属性构造方法
 	public Comments(int commentID, int contentID, String commentUser,
-			String comment, String commentDate, boolean like, boolean dislike) {
+			String comment, Date commentDate, boolean like, boolean dislike) {
 		super();
 		this.commentID = commentID;
 		this.contentID = contentID;

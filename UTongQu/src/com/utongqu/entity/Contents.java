@@ -16,13 +16,14 @@ public class Contents {
 	private String contentUser;          //发布内容的用户
 	private String image;                //内容附带的image;
 	private String content;              //内容 
-	private String contentDate;            //发布内容的时间
+	private Date contentDate;            //发布内容的时间
      
 	//非数据表字段
 	private String contentUserFace;       //发表内容的用户的头像
 	private int like;                     //统计喜欢的人数
 	private int dislike;                  //统计不喜欢的人数
 	private int comment;                  //统计评论的人数
+	private String strDate;            //发布内容的时间
 	@Transient
 	public String getContentUserFace() {
 		return contentUserFace;
@@ -77,11 +78,17 @@ public class Contents {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getContentDate() {
+	public Date getContentDate() {
 		return contentDate;
 	}
-	public void setContentDate(String contentDate) {
+	public void setContentDate(Date contentDate) {
 		this.contentDate = contentDate;
+	}
+	public String getStrDate() {
+		return strDate;
+	}
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
 	}
 	//空构造方法
 	public Contents(){
@@ -89,7 +96,7 @@ public class Contents {
 	}
 	//带全属性构造方法
 	public Contents(int contentID, String contentUser, String image,
-			String content, String contentDate) {
+			String content, Date contentDate) {
 		super();
 		this.contentID = contentID;
 		this.contentUser = contentUser;

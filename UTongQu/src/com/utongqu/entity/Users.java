@@ -22,6 +22,7 @@ public class Users {
 	private String email;         //user email
 	private String joinDate;        //user joinDate
 	private String lastLoginDate;   //user last login date
+	private String loginDate;
 	private String question;      //密保问题
 	private String answer;        //密保答案
 	//不是字段的属性
@@ -124,6 +125,12 @@ public class Users {
 	public void setGenders(String genders) {
 		Genders = genders;
 	}
+	public String getLoginDate() {
+		return loginDate;
+	}
+	public void setLoginDate(String loginDate) {
+		this.loginDate = loginDate;
+	}
 	//空构造方法
 	public Users(){
 		
@@ -131,8 +138,9 @@ public class Users {
 	//带全属性构造方法
 	public Users(int uid, String username, String password, String face,
 			int gender, String birthday, String address, String job,
-			String email, String lastLoginDate, String joinDate, String question,
-			String answer) {
+			String email, String joinDate, String lastLoginDate,
+			String loginDate, String question, String answer,
+			String passwordConfirmation, String genders) {
 		super();
 		this.uid = uid;
 		this.username = username;
@@ -143,31 +151,47 @@ public class Users {
 		this.address = address;
 		this.job = job;
 		this.email = email;
-		this.lastLoginDate = lastLoginDate;
 		this.joinDate = joinDate;
+		this.lastLoginDate = lastLoginDate;
+		this.loginDate = loginDate;
+		this.question = question;
+		this.answer = answer;
+		this.passwordConfirmation = passwordConfirmation;
+		Genders = genders;
+	}
+	//带数据库字段
+	public Users(int uid, String username, String password, String face,
+			int gender, String birthday, String address, String job,
+			String email, String joinDate, String lastLoginDate,
+			String loginDate, String question, String answer) {
+		super();
+		this.uid = uid;
+		this.username = username;
+		this.password = password;
+		this.face = face;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.address = address;
+		this.job = job;
+		this.email = email;
+		this.joinDate = joinDate;
+		this.lastLoginDate = lastLoginDate;
+		this.loginDate = loginDate;
 		this.question = question;
 		this.answer = answer;
 	}
-	
 	//toString 方法
 	@Override
 	public String toString() {
 		return "Users [uid=" + uid + ", username=" + username + ", password="
 				+ password + ", face=" + face + ", gender=" + gender
 				+ ", birthday=" + birthday + ", address=" + address + ", job="
-				+ job + ", email=" + email + ", lastLoginDate=" + lastLoginDate
-				+ ", joinDate=" + joinDate + ", question=" + question
-				+ ", answer=" + answer + "]";
+				+ job + ", email=" + email + ", joinDate=" + joinDate
+				+ ", lastLoginDate=" + lastLoginDate + ", loginDate="
+				+ loginDate + ", question=" + question + ", answer=" + answer
+				+ ", passwordConfirmation=" + passwordConfirmation
+				+ ", Genders=" + Genders + "]";
 	}
-	
-	
-	
-		
-	
-	
-	
-	
-	
 	
 	
 }

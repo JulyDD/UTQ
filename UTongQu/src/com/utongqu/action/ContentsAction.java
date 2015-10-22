@@ -47,7 +47,7 @@ public class ContentsAction extends SuperAction {
 				c.setContentUser(contentUser);
 				c.setImage(image);
 				c.setContent(content);
-				c.setContentDate(sdf.format(date));
+				c.setContentDate(sdf.parse(sdf.format(date)));
 				ContentsDao cdao=new ContentsDaoImpl();
 				boolean bRet=cdao.addContent(c);
 				if(bRet){
@@ -78,13 +78,12 @@ public class ContentsAction extends SuperAction {
 			for(int i=0;i<contentList.size();i++){
 				UsersDao udao=new UsersDaoImpl();
 				String face=udao.findFaceByUserName(contentList.get(i).getContentUser());
-				System.out.println(face);
 		        contentList.get(i).setContentUserFace(face);
+		        contentList.get(i).setStrDate(sdf.format(contentList.get(i).getContentDate()));
 		        contentList.get(i).setDislike(0);
 		        contentList.get(i).setLike(0);
 		        contentList.get(i).setComment(0);
 			}
-			
 			
 			JSONArray jsonArray = JSONArray.fromObject(contentList);
 			String jsonData=jsonArray.toString();

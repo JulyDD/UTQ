@@ -189,14 +189,14 @@ $(function(){
         var html = '';
         var i=0, length=data.data.length ;
         for(; i<length; i++) {
-          
+          console.log(data.data[i].content);
           html =moban.replace(/{{image}}/,"images/"+data.data[i].image)
           .replace(/{{image}}/,"images/"+data.data[i].image)
-			.replace(/{{content}}/,+data.data[i].content)
+			.replace(/{{content}}/,data.data[i].content)
 			.replace(/{{title}}/,data.data[i].title)
 			.replace(/{{headpic}}/,"images/"+data.data[i].contentUserFace)
 			.replace(/{{person}}/,data.data[i].contentUser)
-			.replace(/{{time}}/,data.data[i].contentDate)
+			.replace(/{{time}}/,data.data[i].strDate)
 			.replace(/{{like}}/,data.data[i].like)
 			.replace(/{{dislike}}/,data.data[i].dislike)
 			.replace(/{{comment}}/,data.data[i].comment);
