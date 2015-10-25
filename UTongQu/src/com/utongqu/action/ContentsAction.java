@@ -11,7 +11,10 @@ import com.utongqu.dao.UsersDao;
 import com.utongqu.dao.impl.ContentsDaoImpl;
 import com.utongqu.dao.impl.UsersDaoImpl;
 import com.utongqu.entity.Contents;
+import com.utongqu.entity.PageBean;
 import com.utongqu.entity.Users;
+import com.utongqu.service.ContentService;
+import com.utongqu.service.impl.ContentServiceImpl;
 
 public class ContentsAction extends SuperAction {
 
@@ -95,5 +98,36 @@ public class ContentsAction extends SuperAction {
 		response.getWriter().print(responseStr);
 		return null;
 	}
+	
+    private ContentService personService = new ContentServiceImpl();
+    
+    private int page;
+    
+    public int getPage()
+    {
+        return page;
+    }
+
+    public void setPage(int page)
+    {
+        this.page = page;
+    }
+
+    public String findContents() throws Exception
+    {
+    	response.setContentType("text/html;charset=UTF-8");
+		String responseStr = "";
+        //表示每页显示10条记录，page表示当前网页
+        PageBean pageBean = personService.getPageBean(10, page);
+        
+        session.setAttribute("pageBean", pageBean);
+
+        JSONArray jsonArray = JSONArray.fromObject(pageBean.getList());
+		String jsonData=jsonArray.toString();
+		responseStr="{\"success\":true,\"message\":\"Retrieved pictures\",\"data\":"+jsonData+"}";
+		response.getWriter().print(responseStr);
+        return null;
+    }
+    
 	
 }

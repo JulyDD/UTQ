@@ -1,4 +1,4 @@
-package com.utong.dao.impl;
+package com.utongqu.dao.impl;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;

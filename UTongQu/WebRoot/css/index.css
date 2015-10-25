@@ -172,7 +172,7 @@ footer a {
 .headpic>img{ width:36px; height:36px; padding:1px;}
 .imsg { width:150px; float:left; margin-left:8px; margin-top:17px;}
 .imsg p { color:#a0a0a0; font-size:12px; text-align:center;}
-.imsg .time { font-size:11px;} 
+.time { font-size:11px; color:#666;} 
 .imsg p a{ display:block; width:24px; height:24px; float:right;}
 .imsg p a img{ width:24px !important; height:24px !important;}
 .action { width:100%; height:29px;  margin-top:1px; padding:0 50px; line-height:29px;}

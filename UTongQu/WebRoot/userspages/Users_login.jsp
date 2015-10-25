@@ -116,7 +116,7 @@ $(function(){
       var handler = null,
           page = 1,
           isLoading = true,
-          apiURL = 'contents/Contents_findAllContents.action';
+          apiURL = 'contents/Contents_findContents.action';
 
       // Prepare layout options.
       var options = {

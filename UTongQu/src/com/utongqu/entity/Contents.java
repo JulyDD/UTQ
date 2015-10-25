@@ -84,6 +84,7 @@ public class Contents {
 	public void setContentDate(Date contentDate) {
 		this.contentDate = contentDate;
 	}
+	@Transient
 	public String getStrDate() {
 		return strDate;
 	}
